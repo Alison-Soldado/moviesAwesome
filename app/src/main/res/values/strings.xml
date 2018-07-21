@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">moviesawesome</string>
+    <string name="item_main_description_image">Image movie</string>
 </resources>

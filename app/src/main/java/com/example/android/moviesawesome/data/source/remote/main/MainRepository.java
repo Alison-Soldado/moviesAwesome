@@ -1,12 +1,11 @@
 package com.example.android.moviesawesome.data.source.remote.main;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.support.annotation.NonNull;
 
 import com.example.android.moviesawesome.data.model.Movie;
 import com.example.android.moviesawesome.data.source.remote.ApiUtils;
-import com.example.android.moviesawesome.data.source.remote.service.WebService;
+import com.example.android.moviesawesome.data.source.remote.WebService;
 
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -11,7 +11,7 @@ public class MainViewModel extends ViewModel {
     MutableLiveData<Movie> movieMutableLiveData = new MutableLiveData<>();
     private MainRepository mainRepository = new MainRepository();
 
-    public void initMovie(Integer page) {
+    void getListMovies(Integer page) {
         mainRepository.getMovie(movieMutableLiveData, page);
     }
 }

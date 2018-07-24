@@ -34,7 +34,19 @@ public class Result implements Parcelable {
     @SerializedName("release_date")
     private String release_date;
 
-    public Result(int vote_count, double id, boolean video, float vote_average, String title, double popularity, String poster_path, String original_language, String original_title, String backdrop_path, boolean adult, String overview, String release_date) {
+    public Result(int vote_count,
+                  double id,
+                  boolean video,
+                  float vote_average,
+                  String title,
+                  double popularity,
+                  String poster_path,
+                  String original_language,
+                  String original_title,
+                  String backdrop_path,
+                  boolean adult,
+                  String overview,
+                  String release_date) {
         this.vote_count = vote_count;
         this.id = id;
         this.video = video;

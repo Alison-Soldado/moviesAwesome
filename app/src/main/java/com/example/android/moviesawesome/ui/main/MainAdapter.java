@@ -3,12 +3,10 @@ package com.example.android.moviesawesome.ui.main;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
@@ -49,8 +47,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
         return results.size();
     }
 
+    public void addItems(List<Result> results) {
+        this.results = results;
+        notifyDataSetChanged();
+    }
+
     public interface MainAdapterOnItemClickHandler {
-        void onItemClick();
+        void onItemClick(Result result);
     }
 
     class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -58,13 +61,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
         MainAdapterViewHolder(View view) {
             super(view);
-            imageMovie = view.findViewById(R.id.item_main_image);
+            this.imageMovie = view.findViewById(R.id.item_main_image);
             view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            clickHandler.onItemClick();
+            clickHandler.onItemClick(results.get(getAdapterPosition()));
         }
     }
 }

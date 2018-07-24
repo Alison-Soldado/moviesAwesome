@@ -1,4 +1,4 @@
-package com.example.android.moviesawesome.data.source.remote.service;
+package com.example.android.moviesawesome.data.source.remote;
 
 
 import com.example.android.moviesawesome.data.model.Movie;

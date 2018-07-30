@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">moviesawesome</string>
     <string name="item_main_description_image">Image movie</string>
+
+    <!-- Menu Main -->
+    <string name="menu_main_text_movie_popular">Popular</string>
+    <string name="menu_main_text_movie_top_rated">Top Rated</string>
+
+    <!-- Detail -->
+    <string name="activity_detail_text_favorite">mark as favorite</string>
 </resources>

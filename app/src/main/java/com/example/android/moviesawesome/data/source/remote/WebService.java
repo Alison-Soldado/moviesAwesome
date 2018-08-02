@@ -10,9 +10,9 @@ import retrofit2.http.Query;
 
 public interface WebService {
 
-    @GET("popular?api_key=PUT HERE")
+    @GET("popular?api_key=792eb02e9767b4c71aa0bfe6d7c51e60")
     Call<Movie> getMoviePopular(@Query("page") Integer page);
 
-    @GET("top_rated?api_key=PUT HERE")
+    @GET("top_rated?api_key=792eb02e9767b4c71aa0bfe6d7c51e60")
     Call<Movie> getMovieTopRated(@Query("page") Integer page);
 }

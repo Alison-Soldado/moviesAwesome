@@ -24,7 +24,7 @@ public class MainRepository {
 
             @Override
             public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
-
+                // TODO: Desenvolver caso de erro na lista de filmes
             }
         });
     }
@@ -38,7 +38,7 @@ public class MainRepository {
 
                 @Override
                 public void onFailure(@NonNull Call<Movie> call, @NonNull Throwable t) {
-
+                    // TODO: Desenvolver caso de erro na lista de filmes rated top
                 }
             });
     }

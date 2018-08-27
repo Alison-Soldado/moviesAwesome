@@ -56,6 +56,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
         void onItemClick(Result result);
     }
 
+    //TODO: Extrair essa inner class para uma classe
     class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private ImageView imageMovie;
 

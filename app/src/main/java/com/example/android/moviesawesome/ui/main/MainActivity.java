@@ -18,7 +18,8 @@ import com.example.android.moviesawesome.ui.detail.DetailActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements MainAdapter.MainAdapterOnItemClickHandler {
+public class MainActivity extends AppCompatActivity
+        implements MainAdapter.MainAdapterOnItemClickHandler {
 
     private final int PAGE_START = 1;
     private final int NUMBER_COLUMNS = 2;

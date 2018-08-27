@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
-import com.example.android.moviesawesome.data.model.Result;
+import com.example.android.moviesawesome.data.model.movie.Result;
 
 public class DetailActivity extends AppCompatActivity {
 

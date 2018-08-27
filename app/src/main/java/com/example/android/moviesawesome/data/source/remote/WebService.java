@@ -1,7 +1,7 @@
 package com.example.android.moviesawesome.data.source.remote;
 
 
-import com.example.android.moviesawesome.data.model.Movie;
+import com.example.android.moviesawesome.data.model.movie.Movie;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

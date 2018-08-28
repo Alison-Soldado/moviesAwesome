@@ -34,7 +34,8 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailAdap
 
     @Override
     public void onBindViewHolder(@NonNull DetailAdapter.DetailAdapterViewHolder holder, int position) {
-        holder.textView.setText(results.get(position).getName());
+        holder.textViewName.setText(results.get(position).getName());
+        holder.textViewType.setText(results.get(position).getType());
     }
 
     @Override
@@ -54,11 +55,13 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailAdap
 
     //TODO: Extrair essa inner class para uma classe
     class DetailAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private TextView textView;
+        private TextView textViewName;
+        private TextView textViewType;
 
         DetailAdapterViewHolder(View view) {
             super(view);
-            this.textView = view.findViewById(R.id.item_trailer_text);
+            this.textViewName = view.findViewById(R.id.item_trailer_text_name);
+            this.textViewType = view.findViewById(R.id.item_trailer_text_type);
             view.setOnClickListener(this);
         }
 

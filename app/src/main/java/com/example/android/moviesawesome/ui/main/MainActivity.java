@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.android.moviesawesome.R;
-import com.example.android.moviesawesome.data.model.Result;
+import com.example.android.moviesawesome.data.model.movie.Result;
 import com.example.android.moviesawesome.ui.detail.DetailActivity;
 
 import java.util.ArrayList;

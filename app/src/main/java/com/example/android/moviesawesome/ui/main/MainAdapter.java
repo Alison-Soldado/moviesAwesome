@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
-import com.example.android.moviesawesome.data.model.Result;
+import com.example.android.moviesawesome.data.model.movie.Result;
 
 import java.util.List;
 

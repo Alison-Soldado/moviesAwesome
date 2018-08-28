@@ -2,7 +2,7 @@ package com.example.android.moviesawesome.ui.main;
 
 import android.arch.lifecycle.ViewModel;
 
-import com.example.android.moviesawesome.data.model.Movie;
+import com.example.android.moviesawesome.data.model.movie.Movie;
 import com.example.android.moviesawesome.data.source.remote.main.MainRepository;
 import com.example.android.moviesawesome.util.SingleLiveEvent;
 

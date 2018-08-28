@@ -2,7 +2,7 @@ package com.example.android.moviesawesome.data.source.remote.main;
 
 import android.support.annotation.NonNull;
 
-import com.example.android.moviesawesome.data.model.Movie;
+import com.example.android.moviesawesome.data.model.movie.Movie;
 import com.example.android.moviesawesome.data.source.remote.ApiUtils;
 import com.example.android.moviesawesome.data.source.remote.WebService;
 import com.example.android.moviesawesome.util.SingleLiveEvent;

@@ -3,6 +3,8 @@ package com.example.android.moviesawesome.ui.main;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     private MainAdapter mainAdapter;
     private MainViewModel mainViewModel;
     private List<Result> results = new ArrayList<>();
+    private BottomNavigationView navigationMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +40,18 @@ public class MainActivity extends AppCompatActivity
         initInstance();
         getList();
         setupRecyclerView();
+        setupNavigation();
         initObservers();
+    }
+
+    private void setupNavigation() {
+        navigationMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void initComponents() {
         recyclerMain = findViewById(R.id.activity_main_recycler_movie);
         progressBarMain = findViewById(R.id.activity_main_progress_bar);
+        navigationMain = findViewById(R.id.activity_main_navigation);
     }
 
     private void initInstance() {
@@ -79,24 +88,20 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_main_movie_popular:
-                getList();
-                break;
-            case R.id.menu_main_movie_top_rated:
-                getListTopRated();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+                switch (item.getItemId()) {
+                    case R.id.menu_main_movie_popular:
+                        getList();
+                        return true;
+                    case R.id.menu_main_movie_top_rated:
+                        getListTopRated();
+                        return true;
+                    case R.id.menu_main_movie_my_favorites:
+                        return true;
+                }
+                return false;
+            };
 
     @Override
     public void onItemClick(Result result) {

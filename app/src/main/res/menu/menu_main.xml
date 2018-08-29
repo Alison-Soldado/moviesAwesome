@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group>
         <item
             android:id="@+id/menu_main_movie_popular"
             android:title="@string/menu_main_text_movie_popular"
-            android:orderInCategory="1"/>
+            android:icon="@drawable/ic_home"
+            android:orderInCategory="1"
+            app:showAsAction="ifRoom"/>
 
         <item
             android:id="@+id/menu_main_movie_top_rated"
             android:title="@string/menu_main_text_movie_top_rated"
-            android:orderInCategory="2"/>
+            android:icon="@drawable/ic_top_rated"
+            android:orderInCategory="2"
+            app:showAsAction="ifRoom"/>
+
+        <item
+            android:id="@+id/menu_main_movie_my_favorites"
+            android:title="@string/menu_main_text_movie_my_favorites"
+            android:icon="@drawable/ic_favorite_movie"
+            android:orderInCategory="3"
+            app:showAsAction="ifRoom"/>
     </group>
 </menu>

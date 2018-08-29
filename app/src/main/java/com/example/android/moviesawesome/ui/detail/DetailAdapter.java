@@ -12,7 +12,7 @@ public class DetailAdapter extends FragmentPagerAdapter {
 
     private double id;
 
-    public DetailAdapter(FragmentManager fragmentManager, double id) {
+    DetailAdapter(FragmentManager fragmentManager, double id) {
         super(fragmentManager);
         this.id = id;
     }

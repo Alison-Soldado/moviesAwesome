@@ -27,13 +27,13 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerA
 
     @NonNull
     @Override
-    public TrailerAdapter.TrailerAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public TrailerAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_trailer, parent, false);
-        return new TrailerAdapter.TrailerAdapterViewHolder(view);
+        return new TrailerAdapterViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TrailerAdapter.TrailerAdapterViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull TrailerAdapterViewHolder holder, int position) {
         holder.textViewName.setText(results.get(position).getName());
         holder.textViewType.setText(results.get(position).getType());
     }

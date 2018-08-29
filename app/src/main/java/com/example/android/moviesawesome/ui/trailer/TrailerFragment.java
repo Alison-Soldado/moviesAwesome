@@ -2,11 +2,13 @@ package com.example.android.moviesawesome.ui.trailer;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -80,7 +82,10 @@ public class TrailerFragment extends Fragment
     private void setupRecyclerView() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerViewTrailer.setLayoutManager(linearLayoutManager);
-        DividerItemDecoration itemDecoration = new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL);
+        DividerItemDecoration itemDecoration =
+                new DividerItemDecoration(Objects.requireNonNull(getContext()), DividerItemDecoration.VERTICAL);
+        Drawable drawableWhite = ContextCompat.getDrawable(getContext(), R.color.colorDivider);
+        itemDecoration.setDrawable(Objects.requireNonNull(drawableWhite));
         recyclerViewTrailer.addItemDecoration(itemDecoration);
         recyclerViewTrailer.setHasFixedSize(true);
         recyclerViewTrailer.setAdapter(trailerAdapter);
@@ -92,8 +97,9 @@ public class TrailerFragment extends Fragment
 
     @Override
     public void onItemClick(ResultVideo result) {
+        String URL_YOUTUBE = "https://www.youtube.com/watch?v=";
         Intent intentYoutube =
-                new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=".concat(result.getKey())));
+                new Intent(Intent.ACTION_VIEW, Uri.parse(URL_YOUTUBE.concat(result.getKey())));
         startActivity(intentYoutube);
     }
 }

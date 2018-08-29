@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity
         implements MainAdapter.MainAdapterOnItemClickHandler {
 
     private final int PAGE_START = 1;
-    private final int NUMBER_COLUMNS = 2;
 
     private RecyclerView recyclerMain;
     private ProgressBar progressBarMain;
@@ -64,8 +63,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView() {
-        GridLayoutManager gridLayoutManager =
-                new GridLayoutManager(this, NUMBER_COLUMNS);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerMain.setLayoutManager(gridLayoutManager);
         recyclerMain.setHasFixedSize(true);
         recyclerMain.setAdapter(mainAdapter);

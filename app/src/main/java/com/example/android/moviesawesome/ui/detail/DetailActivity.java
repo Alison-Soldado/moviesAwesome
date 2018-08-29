@@ -61,13 +61,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void initObserver() {
         detailViewModel.getFavorite().observe(this, result -> {
-            if (result != null) {
-                if (this.result.getId() == result.getId()) {
-                    Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "Falhou", Toast.LENGTH_SHORT).show();
-            }
+
         });
     }
 

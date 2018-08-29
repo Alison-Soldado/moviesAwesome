@@ -1,22 +1,28 @@
 package com.example.android.moviesawesome.ui.detail;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.movie.Result;
+import com.example.android.moviesawesome.data.source.local.AppDatabase;
+import com.example.android.moviesawesome.util.AppExecutors;
 
 public class DetailActivity extends AppCompatActivity {
+
+    private static final int DEFAULT_FAVORITE_ID = -1;
 
     private Result result;
     private TextView textViewTitle;
@@ -31,6 +37,7 @@ public class DetailActivity extends AppCompatActivity {
     private FloatingActionButton fabFavorite;
     private ViewPager viewPagerDetail;
     private DetailAdapter detailAdapter;
+    private DetailViewModel detailViewModel;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,8 +47,28 @@ public class DetailActivity extends AppCompatActivity {
         initIntent();
         setupToolbar();
         setupCollapsing();
+        initInstance();
         fillComponents();
         setupViewPager();
+        initObserver();
+    }
+
+    private void initInstance() {
+        AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
+        DetailViewModelFactory factory = new DetailViewModelFactory(appDatabase, result.getId());
+        detailViewModel = ViewModelProviders.of(this, factory).get(DetailViewModel.class);
+    }
+
+    private void initObserver() {
+        detailViewModel.getFavorite().observe(this, result -> {
+            if (result != null) {
+                if (this.result.getId() == result.getId()) {
+                    Toast.makeText(this, "Sucesso", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(this, "Falhou", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setupViewPager() {
@@ -96,7 +123,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void markAsFavorite(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        AppExecutors.getInstance().diskIO().execute(() -> detailViewModel.insertFavorite(result));
     }
 }

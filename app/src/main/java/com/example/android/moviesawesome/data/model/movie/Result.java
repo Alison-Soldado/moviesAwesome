@@ -1,16 +1,20 @@
 package com.example.android.moviesawesome.data.model.movie;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "result")
 public class Result implements Parcelable {
 
     @SerializedName("vote_count")
     private int vote_count;
+    @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
-    private double id;
+    private long id;
     @SerializedName("video")
     private boolean video;
     @SerializedName("vote_average")
@@ -35,7 +39,7 @@ public class Result implements Parcelable {
     private String release_date;
 
     public Result(int vote_count,
-                  double id,
+                  long id,
                   boolean video,
                   float vote_average,
                   String title,
@@ -62,9 +66,9 @@ public class Result implements Parcelable {
         this.release_date = release_date;
     }
 
-    public Result(Parcel in) {
+    protected Result(Parcel in) {
         vote_count = in.readInt();
-        id = in.readDouble();
+        id = in.readLong();
         video = in.readByte() != 0;
         vote_average = in.readFloat();
         title = in.readString();
@@ -76,6 +80,28 @@ public class Result implements Parcelable {
         adult = in.readByte() != 0;
         overview = in.readString();
         release_date = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(vote_count);
+        dest.writeLong(id);
+        dest.writeByte((byte) (video ? 1 : 0));
+        dest.writeFloat(vote_average);
+        dest.writeString(title);
+        dest.writeDouble(popularity);
+        dest.writeString(poster_path);
+        dest.writeString(original_language);
+        dest.writeString(original_title);
+        dest.writeString(backdrop_path);
+        dest.writeByte((byte) (adult ? 1 : 0));
+        dest.writeString(overview);
+        dest.writeString(release_date);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Result> CREATOR = new Creator<Result>() {
@@ -90,28 +116,6 @@ public class Result implements Parcelable {
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(vote_count);
-        dest.writeDouble(id);
-        dest.writeByte((byte) (video ? 1 : 0));
-        dest.writeFloat(vote_average);
-        dest.writeString(title);
-        dest.writeDouble(popularity);
-        dest.writeString(poster_path);
-        dest.writeString(original_language);
-        dest.writeString(original_title);
-        dest.writeString(backdrop_path);
-        dest.writeByte((byte) (adult ? 1 : 0));
-        dest.writeString(overview);
-        dest.writeString(release_date);
-    }
-
     public int getVote_count() {
         return vote_count;
     }
@@ -120,11 +124,11 @@ public class Result implements Parcelable {
         this.vote_count = vote_count;
     }
 
-    public double getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -214,9 +218,5 @@ public class Result implements Parcelable {
 
     public void setRelease_date(String release_date) {
         this.release_date = release_date;
-    }
-
-    public static Creator<Result> getCREATOR() {
-        return CREATOR;
     }
 }

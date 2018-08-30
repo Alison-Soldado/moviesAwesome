@@ -1,7 +1,5 @@
 package com.example.android.moviesawesome.ui.detail;
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -12,7 +10,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
@@ -21,8 +18,6 @@ import com.example.android.moviesawesome.data.source.local.AppDatabase;
 import com.example.android.moviesawesome.util.AppExecutors;
 
 public class DetailActivity extends AppCompatActivity {
-
-    private static final int DEFAULT_FAVORITE_ID = -1;
 
     private Result result;
     private TextView textViewTitle;
@@ -37,7 +32,7 @@ public class DetailActivity extends AppCompatActivity {
     private FloatingActionButton fabFavorite;
     private ViewPager viewPagerDetail;
     private DetailAdapter detailAdapter;
-    private DetailViewModel detailViewModel;
+    private AppDatabase appDatabase;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,22 +42,18 @@ public class DetailActivity extends AppCompatActivity {
         initIntent();
         setupToolbar();
         setupCollapsing();
-        initInstance();
         fillComponents();
+        initAppDatabase();
         setupViewPager();
         initObserver();
     }
 
-    private void initInstance() {
-        AppDatabase appDatabase = AppDatabase.getInstance(getApplicationContext());
-        DetailViewModelFactory factory = new DetailViewModelFactory(appDatabase, result.getId());
-        detailViewModel = ViewModelProviders.of(this, factory).get(DetailViewModel.class);
+    private void initAppDatabase() {
+        appDatabase = AppDatabase.getInstance(getApplicationContext());
     }
 
     private void initObserver() {
-        detailViewModel.getFavorite().observe(this, result -> {
 
-        });
     }
 
     private void setupViewPager() {
@@ -117,6 +108,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void markAsFavorite(View view) {
-        AppExecutors.getInstance().diskIO().execute(() -> detailViewModel.insertFavorite(result));
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            appDatabase.detailDao().insertFavorite(result);
+        });
     }
 }

@@ -1,5 +1,6 @@
 package com.example.android.moviesawesome.data.model.movie;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
@@ -10,31 +11,56 @@ import com.google.gson.annotations.SerializedName;
 @Entity(tableName = "result")
 public class Result implements Parcelable {
 
+    @ColumnInfo
     @SerializedName("vote_count")
     private int vote_count;
+
+    @ColumnInfo
     @PrimaryKey(autoGenerate = true)
     @SerializedName("id")
     private long id;
+
+    @ColumnInfo
     @SerializedName("video")
     private boolean video;
+
+    @ColumnInfo
     @SerializedName("vote_average")
     private float vote_average;
+
+    @ColumnInfo
     @SerializedName("title")
     private String title;
+
+    @ColumnInfo
     @SerializedName("popularity")
     private double popularity;
+
+    @ColumnInfo
     @SerializedName("poster_path")
     private String poster_path;
+
+    @ColumnInfo
     @SerializedName("original_language")
     private String original_language;
+
+    @ColumnInfo
     @SerializedName("original_title")
     private String original_title;
+
+    @ColumnInfo
     @SerializedName("backdrop_path")
     private String backdrop_path;
+
+    @ColumnInfo
     @SerializedName("adult")
     private boolean adult;
+
+    @ColumnInfo
     @SerializedName("overview")
     private String overview;
+
+    @ColumnInfo
     @SerializedName("release_date")
     private String release_date;
 

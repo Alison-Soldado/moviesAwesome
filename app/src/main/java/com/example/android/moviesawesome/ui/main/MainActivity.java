@@ -3,19 +3,18 @@ package com.example.android.moviesawesome.ui.main;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.movie.Result;
+import com.example.android.moviesawesome.data.source.local.AppDatabase;
 import com.example.android.moviesawesome.ui.detail.DetailActivity;
+import com.example.android.moviesawesome.util.AppExecutors;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,7 @@ public class MainActivity extends AppCompatActivity
     private MainViewModel mainViewModel;
     private List<Result> results = new ArrayList<>();
     private BottomNavigationView navigationMain;
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void initInstance() {
+        appDatabase = AppDatabase.getInstance(getApplicationContext());
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         mainAdapter = new MainAdapter(this, this, results);
     }
@@ -69,6 +70,18 @@ public class MainActivity extends AppCompatActivity
         progressBarMain.setVisibility(View.VISIBLE);
         recyclerMain.setVisibility(View.GONE);
         mainViewModel.getListMoviesTop(PAGE_START);
+    }
+
+    private void getMyFavorites() {
+        progressBarMain.setVisibility(View.VISIBLE);
+        recyclerMain.setVisibility(View.GONE);
+        AppExecutors.getInstance().diskIO().execute(() -> {
+            results = appDatabase.detailDao().getAllFavorites();
+        });
+
+        mainAdapter.addItems(results);
+        progressBarMain.setVisibility(View.GONE);
+        recyclerMain.setVisibility(View.VISIBLE);
     }
 
     private void setupRecyclerView() {
@@ -98,10 +111,12 @@ public class MainActivity extends AppCompatActivity
                         getListTopRated();
                         return true;
                     case R.id.menu_main_movie_my_favorites:
+                        getMyFavorites();
                         return true;
                 }
                 return false;
             };
+
 
     @Override
     public void onItemClick(Result result) {

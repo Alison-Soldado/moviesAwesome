@@ -48,6 +48,5 @@
         android:layout_margin="@dimen/fab_margin"
         app:layout_anchor="@id/activity_detail_app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_favorite_movie"
-        android:onClick="markAsFavorite"/>
+        app:srcCompat="@drawable/ic_favorite_movie"/>
 </android.support.design.widget.CoordinatorLayout>

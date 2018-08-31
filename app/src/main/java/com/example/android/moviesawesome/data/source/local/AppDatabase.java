@@ -30,6 +30,6 @@ public abstract class AppDatabase extends RoomDatabase {
         return sInstance;
     }
 
-    public abstract FavoriteDao detailDao();
+    public abstract FavoriteDao favoriteDao();
 
 }

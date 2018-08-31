@@ -7,6 +7,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity
     private List<Result> results = new ArrayList<>();
     private BottomNavigationView navigationMain;
     private AppDatabase appDatabase;
+    int posterWidth = 500;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,7 @@ public class MainActivity extends AppCompatActivity
         progressBarMain.setVisibility(View.VISIBLE);
         recyclerMain.setVisibility(View.GONE);
         AppExecutors.getInstance().diskIO().execute(() -> {
-            results = appDatabase.detailDao().getAllFavorites();
+            results = appDatabase.favoriteDao().getAllFavorites();
         });
 
         mainAdapter.addItems(results);
@@ -85,7 +88,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupRecyclerView() {
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
+        GridLayoutManager gridLayoutManager =
+                new GridLayoutManager(this, calculateBestSpanCount(posterWidth));
         recyclerMain.setLayoutManager(gridLayoutManager);
         recyclerMain.setHasFixedSize(true);
         recyclerMain.setAdapter(mainAdapter);
@@ -117,6 +121,13 @@ public class MainActivity extends AppCompatActivity
                 return false;
             };
 
+    private int calculateBestSpanCount(int posterWidth) {
+        Display display = getWindowManager().getDefaultDisplay();
+        DisplayMetrics outMetrics = new DisplayMetrics();
+        display.getMetrics(outMetrics);
+        float screenWidth = outMetrics.widthPixels;
+        return Math.round(screenWidth / posterWidth);
+    }
 
     @Override
     public void onItemClick(Result result) {

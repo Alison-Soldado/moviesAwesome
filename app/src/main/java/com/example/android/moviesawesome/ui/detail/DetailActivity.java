@@ -22,7 +22,6 @@ public class DetailActivity extends AppCompatActivity
 
     private Result result;
     private TextView textViewTitle;
-    private ImageView imageViewImage;
     private TextView textViewYear;
     private TextView textViewDuration;
     private TextView textViewRating;
@@ -58,7 +57,6 @@ public class DetailActivity extends AppCompatActivity
     }
 
     private void initComponents() {
-        imageViewImage = findViewById(R.id.activity_detail_image);
         textViewYear = findViewById(R.id.activity_detail_year);
         textViewDuration = findViewById(R.id.activity_detail_duration);
         textViewRating = findViewById(R.id.activity_detail_rating);
@@ -95,12 +93,7 @@ public class DetailActivity extends AppCompatActivity
 
         Glide
                 .with(this)
-                .load("http://image.tmdb.org/t/p/".concat("w185").concat(result.getPoster_path()))
-                .into(imageViewImage);
-
-        Glide
-                .with(this)
-                .load("http://image.tmdb.org/t/p/".concat("w185").concat(result.getPoster_path()))
+                .load("http://image.tmdb.org/t/p/".concat("w500").concat(result.getPoster_path()))
                 .into(imageViewMovie);
     }
 

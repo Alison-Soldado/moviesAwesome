@@ -1,4 +1,7 @@
 package com.example.android.moviesawesome.util;
 
-public class MyAppGlideModule {
-}
+import com.bumptech.glide.annotation.GlideModule;
+import com.bumptech.glide.module.AppGlideModule;
+
+@GlideModule
+public final class MyAppGlideModule extends AppGlideModule {}

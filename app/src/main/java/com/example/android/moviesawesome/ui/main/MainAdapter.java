@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.movie.Result;
+import com.example.android.moviesawesome.util.GlideApp;
 
 import java.util.List;
 
@@ -35,9 +35,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapterViewHolder holder, int position) {
-        Glide
+        GlideApp
                 .with(context)
                 .load("http://image.tmdb.org/t/p/".concat("w185").concat(results.get(position).getPoster_path()))
+                .placeholder(R.drawable.ic_placeholder_black)
                 .into(holder.imageMovie);
     }
 

@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.video.ResultVideo;
@@ -30,6 +31,7 @@ public class TrailerFragment extends Fragment
     private TrailerViewModel trailerViewModel;
     private TrailerAdapter trailerAdapter;
     private RecyclerView recyclerViewTrailer;
+    private TextView textViewError;
     private List<ResultVideo> results = new ArrayList<>();
 
     public static TrailerFragment newInstance(double id) {
@@ -62,12 +64,20 @@ public class TrailerFragment extends Fragment
 
     private void initComponents(View view) {
         recyclerViewTrailer = view.findViewById(R.id.fragment_trailer_recycler);
+        textViewError = view.findViewById(R.id.item_generic_error_text);
     }
 
     private void initObservers() {
         trailerViewModel.trailerSingleLiveEvent.observe(this, video -> {
             if (video != null) {
-                trailerAdapter.addItems(video.getResults());
+                if (video.data == null) {
+                    textViewError.setVisibility(View.VISIBLE);
+                    recyclerViewTrailer.setVisibility(View.GONE);
+                } else {
+                    trailerAdapter.addItems(video.data.getResults());
+                    textViewError.setVisibility(View.GONE);
+                    recyclerViewTrailer.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

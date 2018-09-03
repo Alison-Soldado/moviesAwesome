@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.review.ResultReview;
@@ -30,6 +31,7 @@ public class ReviewFragment extends Fragment
     private ReviewViewModel reviewViewModel;
     private ReviewAdapter reviewAdapter;
     private RecyclerView recyclerViewReview;
+    private TextView textViewError;
     private List<ResultReview> results = new ArrayList<>();
 
     public static ReviewFragment newInstance(double id) {
@@ -62,12 +64,20 @@ public class ReviewFragment extends Fragment
 
     private void initComponents(View view) {
         recyclerViewReview = view.findViewById(R.id.fragment_review_recycler);
+        textViewError = view.findViewById(R.id.item_generic_error_text);
     }
 
     private void initObservers() {
         reviewViewModel.reviewSingleLiveEvent.observe(this, review -> {
             if (review != null) {
-                reviewAdapter.addItems(review.getResults());
+                if (review.data == null) {
+                    textViewError.setVisibility(View.VISIBLE);
+                    recyclerViewReview.setVisibility(View.GONE);
+                } else {
+                    reviewAdapter.addItems(review.data.getResults());
+                    textViewError.setVisibility(View.GONE);
+                    recyclerViewReview.setVisibility(View.VISIBLE);
+                }
             }
         });
     }

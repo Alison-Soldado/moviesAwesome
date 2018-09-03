@@ -11,6 +11,7 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.movie.Result;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     private ProgressBar progressBarMain;
     private MainAdapter mainAdapter;
     private MainViewModel mainViewModel;
+    private TextView textViewError;
     private List<Result> results = new ArrayList<>();
     private BottomNavigationView navigationMain;
     private AppDatabase appDatabase;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         recyclerMain = findViewById(R.id.activity_main_recycler_movie);
         progressBarMain = findViewById(R.id.activity_main_progress_bar);
         navigationMain = findViewById(R.id.activity_main_navigation);
+        textViewError = findViewById(R.id.item_generic_error_text);
     }
 
     private void initInstance() {
@@ -79,12 +82,8 @@ public class MainActivity extends AppCompatActivity
         progressBarMain.setVisibility(View.VISIBLE);
         recyclerMain.setVisibility(View.GONE);
         AppExecutors.getInstance().diskIO().execute(() -> {
-            results = appDatabase.favoriteDao().getAllFavorites();
+            mainViewModel.getListFavorites(appDatabase);
         });
-
-        mainAdapter.addItems(results);
-        progressBarMain.setVisibility(View.GONE);
-        recyclerMain.setVisibility(View.VISIBLE);
     }
 
     private void setupRecyclerView() {
@@ -98,11 +97,26 @@ public class MainActivity extends AppCompatActivity
     private void initObservers() {
         mainViewModel.movieSingleLiveEvent.observe(this, movie -> {
             if (movie != null) {
-                mainAdapter.addItems(movie.getResults());
-                progressBarMain.setVisibility(View.GONE);
-                recyclerMain.setVisibility(View.VISIBLE);
+                if (movie.data == null) {
+                    textViewError.setVisibility(View.VISIBLE);
+                    progressBarMain.setVisibility(View.GONE);
+                    recyclerMain.setVisibility(View.GONE);
+                } else {
+                    mainAdapter.addItems(movie.data.getResults());
+                    textViewError.setVisibility(View.GONE);
+                    progressBarMain.setVisibility(View.GONE);
+                    recyclerMain.setVisibility(View.VISIBLE);
+                }
             }
         });
+//
+//        mainViewModel.getListFavorites().observe(this, favorite -> {
+//            if (favorite != null) {
+//                mainAdapter.addItems(favorite);
+//                progressBarMain.setVisibility(View.GONE);
+//                recyclerMain.setVisibility(View.VISIBLE);
+//            }
+//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

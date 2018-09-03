@@ -9,4 +9,7 @@
 
     <!-- Detail -->
     <string name="activity_detail_text_favorite">mark as favorite</string>
+
+    <!-- Error -->
+    <string name="item_generic_error_text">It wasn\'t possible load list</string>
 </resources>

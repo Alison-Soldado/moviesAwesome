@@ -33,4 +33,6 @@
         app:itemTextColor="@color/colorDivider"
         app:menu="@menu/menu_main" />
 
+    <include layout="@layout/item_generic_error"/>
+
 </RelativeLayout>

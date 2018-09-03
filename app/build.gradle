@@ -38,7 +38,7 @@ ext {
     retrofitLibVersion = '2.4.0'
     gsonLibVersion = '2.8.5'
     okHttpLibVersion = '3.11.0'
-    glideLibVersion = '4.7.1'
+    glideLibVersion = '4.8.0'
     archLibVersion = '1.1.1'
     junitLibVersion = '4.12'
     runnerLibVersion = '1.0.2'
@@ -63,6 +63,7 @@ dependencies {
     implementation "com.squareup.okhttp3:logging-interceptor:${okHttpLibVersion}"
 
     implementation "com.github.bumptech.glide:glide:${glideLibVersion}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${glideLibVersion}"
 
     implementation "android.arch.persistence.room:runtime:${archLibVersion}"
     annotationProcessor "android.arch.persistence.room:compiler:${archLibVersion}"

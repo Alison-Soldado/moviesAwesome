@@ -3,6 +3,8 @@ package com.example.android.moviesawesome.ui.main;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.os.PersistableBundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -43,10 +45,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         initComponents();
         initInstance();
-        getList();
+        getList(savedInstanceState);
         setupRecyclerView();
         setupNavigation();
         initObservers();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("results", (ArrayList<? extends Parcelable>) mainAdapter.getItems());
+        super.onSaveInstanceState(outState);
     }
 
     private void setupNavigation() {
@@ -66,10 +74,14 @@ public class MainActivity extends AppCompatActivity
         mainAdapter = new MainAdapter(this, this, results);
     }
 
-    private void getList() {
-        progressBarMain.setVisibility(View.VISIBLE);
-        recyclerMain.setVisibility(View.GONE);
-        mainViewModel.getListMovies(PAGE_START);
+    private void getList(Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            mainAdapter.addItems(savedInstanceState.getParcelableArrayList("results"));
+        } else {
+            progressBarMain.setVisibility(View.VISIBLE);
+            recyclerMain.setVisibility(View.GONE);
+            mainViewModel.getListMovies(PAGE_START);
+        }
     }
 
     private void getListTopRated() {
@@ -122,7 +134,7 @@ public class MainActivity extends AppCompatActivity
             = item -> {
                 switch (item.getItemId()) {
                     case R.id.menu_main_movie_popular:
-                        getList();
+                        getList(null);
                         return true;
                     case R.id.menu_main_movie_top_rated:
                         getListTopRated();

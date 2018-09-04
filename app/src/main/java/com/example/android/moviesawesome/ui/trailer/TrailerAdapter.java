@@ -39,10 +39,7 @@ public class TrailerAdapter extends RecyclerView.Adapter<TrailerAdapter.TrailerA
     }
 
     @Override
-    public int getItemCount() {
-        if (null == results) return 0;
-        return results.size();
-    }
+    public int getItemCount() { return results == null ? 0 : results.size(); }
 
     public void addItems(List<ResultVideo> results) {
         this.results = results;

@@ -37,7 +37,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
     public void onBindViewHolder(@NonNull MainAdapterViewHolder holder, int position) {
         GlideApp
                 .with(context)
-                .load("http://image.tmdb.org/t/p/".concat("w185").concat(results.get(position).getPoster_path()))
+                .load("http://image.tmdb.org/t/p/".concat("w342").concat(results.get(position).getPoster_path()))
                 .placeholder(R.drawable.ic_placeholder_black)
                 .into(holder.imageMovie);
     }

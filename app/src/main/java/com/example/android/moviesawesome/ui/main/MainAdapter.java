@@ -46,10 +46,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
     }
 
     @Override
-    public int getItemCount() {
-        if (null == results) return 0;
-        return results.size();
-    }
+    public int getItemCount() { return results == null ? 0 : results.size(); }
 
     public void addItems(List<Result> results) {
         this.results = results;

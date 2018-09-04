@@ -26,11 +26,7 @@ public class MainViewModel extends ViewModel {
         mainRepository.getMovieTop(movieSingleLiveEvent, page);
     }
 
-    void getListFavorites(AppDatabase appDatabase) {
-        resultLiveData = appDatabase.favoriteDao().getAllFavorites();
-    }
-
-    public LiveData<List<Result>> getListFavorites() {
-        return resultLiveData;
+    public LiveData<List<Result>> getListFavorites(AppDatabase appDatabase) {
+        return appDatabase.favoriteDao().getAllFavorites();
     }
 }

@@ -36,11 +36,5 @@ public class DetailAdapter extends FragmentPagerAdapter {
 
     @Nullable
     @Override
-    public CharSequence getPageTitle(int position) {
-        if (position == 0) {
-            return "Trailer";
-        } else {
-            return "Review";
-        }
-    }
+    public CharSequence getPageTitle(int position) { return position == 0 ? "Trailer" : "Review"; }
 }

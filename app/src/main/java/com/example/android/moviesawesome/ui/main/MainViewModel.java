@@ -15,7 +15,6 @@ import java.util.List;
 public class MainViewModel extends ViewModel {
 
     public SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent = new SingleLiveEvent<>();
-    private LiveData<List<Result>> resultLiveData;
     private MainRepository mainRepository = new MainRepository();
 
     void getListMovies(Integer page) {

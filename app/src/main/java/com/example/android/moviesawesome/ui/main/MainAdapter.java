@@ -8,9 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.example.android.moviesawesome.R;
-import com.example.android.moviesawesome.data.model.Result;
+import com.example.android.moviesawesome.data.model.movie.Result;
+import com.example.android.moviesawesome.util.GlideApp;
 
 import java.util.List;
 
@@ -19,6 +19,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
     private Context context;
     private final MainAdapterOnItemClickHandler clickHandler;
     private List<Result> results;
+    public static final String URL_IMAGE = "http://image.tmdb.org/t/p/";
 
     MainAdapter(@NonNull Context context, MainAdapterOnItemClickHandler clickHandler, List<Result> results) {
         this.context = context;
@@ -35,21 +36,25 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapterViewHolder holder, int position) {
-        Glide
+        String WIDTH_IMAGE = "w342";
+
+        GlideApp
                 .with(context)
-                .load("http://image.tmdb.org/t/p/".concat("w185").concat(results.get(position).getPoster_path()))
+                .load(URL_IMAGE.concat(WIDTH_IMAGE).concat(results.get(position).getPoster_path()))
+                .placeholder(R.drawable.ic_placeholder_black)
                 .into(holder.imageMovie);
     }
 
     @Override
-    public int getItemCount() {
-        if (null == results) return 0;
-        return results.size();
-    }
+    public int getItemCount() { return results == null ? 0 : results.size(); }
 
     public void addItems(List<Result> results) {
         this.results = results;
         notifyDataSetChanged();
+    }
+
+    public List<Result> getItems() {
+        return this.results;
     }
 
     public interface MainAdapterOnItemClickHandler {

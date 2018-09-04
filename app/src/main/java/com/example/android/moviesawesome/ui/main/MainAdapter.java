@@ -53,6 +53,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
         notifyDataSetChanged();
     }
 
+    public List<Result> getItems() {
+        return this.results;
+    }
+
     public interface MainAdapterOnItemClickHandler {
         void onItemClick(Result result);
     }

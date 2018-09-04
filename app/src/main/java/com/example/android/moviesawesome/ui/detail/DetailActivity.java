@@ -1,9 +1,11 @@
 package com.example.android.moviesawesome.ui.detail;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -35,6 +37,8 @@ public class DetailActivity extends AppCompatActivity
     private ViewPager viewPagerDetail;
     private DetailAdapter detailAdapter;
     private AppDatabase appDatabase;
+    private DetailViewModel detailViewModel;
+    private Result resultById;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,12 +49,25 @@ public class DetailActivity extends AppCompatActivity
         setupToolbar();
         setupCollapsing();
         fillComponents();
-        initAppDatabase();
+        initInstance();
         setupViewPager();
+        initObserver();
     }
 
-    private void initAppDatabase() {
+    private void initObserver() {
+        detailViewModel.getListFavoritesById(appDatabase, result.getId()).observe(this, result -> {
+            resultById = result;
+            if (result != null) {
+                fabFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_movie_pressed));
+            } else {
+                fabFavorite.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_favorite_no_pressed));
+            }
+        });
+    }
+
+    private void initInstance() {
         appDatabase = AppDatabase.getInstance(getApplicationContext());
+        detailViewModel = ViewModelProviders.of(this).get(DetailViewModel.class);
     }
 
     private void setupViewPager() {
@@ -103,7 +120,11 @@ public class DetailActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         AppExecutors.getInstance().diskIO().execute(() -> {
-            appDatabase.favoriteDao().insertFavorite(result);
+            if (resultById == null) {
+                detailViewModel.setFavorite(appDatabase, result);
+            } else {
+                detailViewModel.deleteFavorite(appDatabase, result);
+            }
         });
     }
 }

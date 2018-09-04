@@ -20,7 +20,7 @@
         <item
             android:id="@+id/menu_main_movie_my_favorites"
             android:title="@string/menu_main_text_movie_my_favorites"
-            android:icon="@drawable/ic_favorite_movie"
+            android:icon="@drawable/ic_favorite_movie_pressed"
             android:orderInCategory="3"
             app:showAsAction="ifRoom"/>
     </group>

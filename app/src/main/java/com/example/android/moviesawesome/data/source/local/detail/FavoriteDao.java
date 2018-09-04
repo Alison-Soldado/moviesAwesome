@@ -18,7 +18,7 @@ public interface FavoriteDao {
     LiveData<List<Result>> getAllFavorites();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertFavorite(Result result);
+    Long insertFavorite(Result result);
 
     @Delete
     void deleteFavorite(Result result);

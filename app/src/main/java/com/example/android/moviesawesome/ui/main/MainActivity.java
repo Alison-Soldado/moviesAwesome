@@ -79,10 +79,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getMyFavorites() {
-        progressBarMain.setVisibility(View.VISIBLE);
-        recyclerMain.setVisibility(View.GONE);
-        AppExecutors.getInstance().diskIO().execute(() -> {
-            mainViewModel.getListFavorites(appDatabase);
+        mainViewModel.getListFavorites(appDatabase).observe(this, favorite -> {
+            if (favorite != null) {
+                mainAdapter.addItems(favorite);
+                textViewError.setVisibility(View.GONE);
+                progressBarMain.setVisibility(View.GONE);
+                recyclerMain.setVisibility(View.VISIBLE);
+            } else {
+                textViewError.setVisibility(View.VISIBLE);
+                progressBarMain.setVisibility(View.GONE);
+                recyclerMain.setVisibility(View.GONE);
+            }
         });
     }
 
@@ -109,14 +116,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-//
-//        mainViewModel.getListFavorites().observe(this, favorite -> {
-//            if (favorite != null) {
-//                mainAdapter.addItems(favorite);
-//                progressBarMain.setVisibility(View.GONE);
-//                recyclerMain.setVisibility(View.VISIBLE);
-//            }
-//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

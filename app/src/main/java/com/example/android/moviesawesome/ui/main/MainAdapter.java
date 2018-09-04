@@ -19,6 +19,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
     private Context context;
     private final MainAdapterOnItemClickHandler clickHandler;
     private List<Result> results;
+    public static final String URL_IMAGE = "http://image.tmdb.org/t/p/";
 
     MainAdapter(@NonNull Context context, MainAdapterOnItemClickHandler clickHandler, List<Result> results) {
         this.context = context;
@@ -35,9 +36,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     @Override
     public void onBindViewHolder(@NonNull MainAdapterViewHolder holder, int position) {
+        String WIDTH_IMAGE = "w342";
+
         GlideApp
                 .with(context)
-                .load("http://image.tmdb.org/t/p/".concat("w342").concat(results.get(position).getPoster_path()))
+                .load(URL_IMAGE.concat(WIDTH_IMAGE).concat(results.get(position).getPoster_path()))
                 .placeholder(R.drawable.ic_placeholder_black)
                 .into(holder.imageMovie);
     }

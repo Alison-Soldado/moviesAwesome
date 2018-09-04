@@ -17,6 +17,8 @@ import com.example.android.moviesawesome.data.model.movie.Result;
 import com.example.android.moviesawesome.data.source.local.AppDatabase;
 import com.example.android.moviesawesome.util.AppExecutors;
 
+import static com.example.android.moviesawesome.ui.main.MainAdapter.URL_IMAGE;
+
 public class DetailActivity extends AppCompatActivity
         implements View.OnClickListener {
 
@@ -90,10 +92,11 @@ public class DetailActivity extends AppCompatActivity
         textViewYear.setText(result.getRelease_date());
         textViewRating.setText(String.valueOf(result.getVote_average()));
         textViewDescription.setText(result.getOverview());
+        String WIDTH_IMAGE = "w500";
 
         Glide
                 .with(this)
-                .load("http://image.tmdb.org/t/p/".concat("w500").concat(result.getPoster_path()))
+                .load(URL_IMAGE.concat(WIDTH_IMAGE).concat(result.getPoster_path()))
                 .into(imageViewMovie);
     }
 

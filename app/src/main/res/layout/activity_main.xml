@@ -28,7 +28,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
+        android:background="@color/colorPrimary"
         app:itemIconTint="@color/colorDivider"
         app:itemTextColor="@color/colorDivider"
         app:menu="@menu/menu_main" />

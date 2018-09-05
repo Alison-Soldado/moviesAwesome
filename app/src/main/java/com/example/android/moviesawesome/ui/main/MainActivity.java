@@ -4,7 +4,6 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.os.PersistableBundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -19,7 +18,6 @@ import com.example.android.moviesawesome.R;
 import com.example.android.moviesawesome.data.model.movie.Result;
 import com.example.android.moviesawesome.data.source.local.AppDatabase;
 import com.example.android.moviesawesome.ui.detail.DetailActivity;
-import com.example.android.moviesawesome.util.AppExecutors;
 
 import java.util.ArrayList;
 import java.util.List;

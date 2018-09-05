@@ -7,7 +7,5 @@
         android:id="@+id/menu_detail_share"
         android:title="@string/menu_detail_text_share"
         android:orderInCategory="1"
-        app:showAsAction="never"
-        app:actionProviderClass=
-            "android.support.v7.widget.ShareActionProvider" />
+        app:showAsAction="never"/>
 </menu>

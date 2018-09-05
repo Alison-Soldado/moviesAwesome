@@ -1,6 +1,7 @@
 package com.example.android.moviesawesome.ui.detail;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -9,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -39,6 +42,7 @@ public class DetailActivity extends AppCompatActivity
     private AppDatabase appDatabase;
     private DetailViewModel detailViewModel;
     private Result resultById;
+    private static final String SPACE = " ";
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -113,8 +117,28 @@ public class DetailActivity extends AppCompatActivity
 
         Glide
                 .with(this)
-                .load(URL_IMAGE.concat(WIDTH_IMAGE).concat(result.getPoster_path()))
+                .load(URL_IMAGE.concat(WIDTH_IMAGE).concat(result.getBackdrop_path()))
                 .into(imageViewMovie);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_detail, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_detail_share) {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.putExtra(
+                    Intent.EXTRA_TEXT,
+                    getString(R.string.menu_detail_text).concat(SPACE).concat(result.getTitle()));
+            sendIntent.setType("text/plain");
+            Intent.createChooser(sendIntent,"Share via");
+            startActivity(sendIntent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

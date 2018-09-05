@@ -128,8 +128,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-
-        getMyFavorites();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

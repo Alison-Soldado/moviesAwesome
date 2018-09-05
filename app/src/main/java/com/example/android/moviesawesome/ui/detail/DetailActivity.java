@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -80,6 +81,7 @@ public class DetailActivity extends AppCompatActivity
     }
 
     private void initComponents() {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
         textViewYear = findViewById(R.id.activity_detail_year);
         textViewDuration = findViewById(R.id.activity_detail_duration);
         textViewRating = findViewById(R.id.activity_detail_rating);

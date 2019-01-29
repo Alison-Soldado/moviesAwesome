@@ -3,8 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.example.android.moviesawesome"
-        minSdkVersion 16
+        applicationId "com.example.moviesawesome"
+        minSdkVersion 22
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -46,6 +46,7 @@ ext {
 }
 
 dependencies {
+    implementation project(':main')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "com.android.support:appcompat-v7:${supportLibVersion}"
 

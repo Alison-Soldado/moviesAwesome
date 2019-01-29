@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupNavigation() {
-//        navigationMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        navigationMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
     private void initComponents() {
@@ -127,21 +127,21 @@ public class MainActivity extends AppCompatActivity
         });
     }
 
-//    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-//            = item -> {
-//                switch (item.getItemId()) {
-//                    case R.id.menu_main_movie_popular:
-//                        getList(null);
-//                        return true;
-//                    case R.id.menu_main_movie_top_rated:
-//                        getListTopRated();
-//                        return true;
-//                    case R.id.menu_main_movie_my_favorites:
-//                        getMyFavorites();
-//                        return true;
-//                }
-//                return false;
-//            };
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = item -> {
+        int i = item.getItemId();
+        if (i == R.id.menu_main_movie_popular) {
+            getList(null);
+            return true;
+        } else if (i == R.id.menu_main_movie_top_rated) {
+            getListTopRated();
+            return true;
+        } else if (i == R.id.menu_main_movie_my_favorites) {
+            getMyFavorites();
+            return true;
+        }
+        return false;
+    };
 
     private int calculateBestSpanCount(int posterWidth) {
         Display display = getWindowManager().getDefaultDisplay();

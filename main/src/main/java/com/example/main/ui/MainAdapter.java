@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.core.data.model.movie.Result;
-import com.example.core.util.GlideApp;
 import com.example.main.R;
+import com.example.main.data.source.remote.GlideApp;
 
 import java.util.List;
 

@@ -2,6 +2,7 @@ package com.example.main.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.BottomNavigationView;
@@ -153,8 +154,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(Result result) {
-//        Intent intentDetail = new Intent(MainActivity.this, DetailActivity.class);
-//        intentDetail.putExtra("result", result);
-//        startActivity(intentDetail);
+        Intent intentDetail = new Intent("com.example.moviesawesome.CUSTOM_ACTION");
+        intentDetail.putExtra("result", result);
+        startActivity(intentDetail);
     }
 }

@@ -23,5 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".detail.ui.DetailActivity">
+            <intent-filter>
+                <action android:name="com.example.moviesawesome.CUSTOM_ACTION"/>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

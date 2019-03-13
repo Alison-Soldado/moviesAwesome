@@ -2,6 +2,8 @@ package com.example.main.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.AppCompatImageView;
+import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,17 +45,19 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
                 .load(urlImage.concat(WIDTH_IMAGE).concat(results.get(position).getPoster_path()))
                 .placeholder(R.drawable.ic_placeholder_black)
                 .into(holder.imageMovie);
+
+        holder.textViewTitleMovie.setText(results.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() { return results == null ? 0 : results.size(); }
 
-    public void addItems(List<Result> results) {
+    void addItems(List<Result> results) {
         this.results = results;
         notifyDataSetChanged();
     }
 
-    public List<Result> getItems() {
+    List<Result> getItems() {
         return this.results;
     }
 
@@ -63,11 +67,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainAdapterVie
 
     //TODO: Extrair essa inner class para uma classe
     class MainAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView imageMovie;
+        private AppCompatImageView imageMovie;
+        private AppCompatTextView textViewTitleMovie;
 
         MainAdapterViewHolder(View view) {
             super(view);
             this.imageMovie = view.findViewById(R.id.item_main_image);
+            this.textViewTitleMovie = view.findViewById(R.id.item_main_title);
             view.setOnClickListener(this);
         }
 

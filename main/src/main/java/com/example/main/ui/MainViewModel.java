@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MainViewModel extends ViewModel {
 
-    public SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent = new SingleLiveEvent<>();
+    SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent = new SingleLiveEvent<>();
     private MainRepository mainRepository = new MainRepository();
 
     void getListMovies(Integer page) {
@@ -25,7 +25,7 @@ public class MainViewModel extends ViewModel {
         mainRepository.getMovieTop(movieSingleLiveEvent, page);
     }
 
-    public LiveData<List<Result>> getListFavorites(AppDatabase appDatabase) {
+    LiveData<List<Result>> getListFavorites(AppDatabase appDatabase) {
         return appDatabase.favoriteDao().getAllFavorites();
     }
 }

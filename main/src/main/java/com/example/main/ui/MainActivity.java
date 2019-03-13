@@ -1,8 +1,6 @@
 package com.example.main.ui;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.BottomNavigationView;
@@ -17,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
+import com.example.core.util.ItemOffsetDecoration;
 import com.example.main.R;
 
 import java.util.ArrayList;
@@ -106,6 +105,7 @@ public class MainActivity extends AppCompatActivity
     private void setupRecyclerView() {
         GridLayoutManager gridLayoutManager =
                 new GridLayoutManager(this, calculateBestSpanCount(posterWidth));
+        recyclerMain.addItemDecoration(new ItemOffsetDecoration(this, R.dimen.small_margin));
         recyclerMain.setLayoutManager(gridLayoutManager);
         recyclerMain.setHasFixedSize(true);
         recyclerMain.setAdapter(mainAdapter);
@@ -130,14 +130,13 @@ public class MainActivity extends AppCompatActivity
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
-        int i = item.getItemId();
-        if (i == R.id.menu_main_movie_popular) {
+        if (item.getItemId() == R.id.menu_main_movie_popular) {
             getList(null);
             return true;
-        } else if (i == R.id.menu_main_movie_top_rated) {
+        } else if (item.getItemId() == R.id.menu_main_movie_top_rated) {
             getListTopRated();
             return true;
-        } else if (i == R.id.menu_main_movie_my_favorites) {
+        } else if (item.getItemId() == R.id.menu_main_movie_my_favorites) {
             getMyFavorites();
             return true;
         }
@@ -154,8 +153,8 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(Result result) {
-        Intent intentDetail = new Intent("com.example.moviesawesome.CUSTOM_ACTION");
-        intentDetail.putExtra("result", result);
-        startActivity(intentDetail);
+//        Intent intentDetail = new Intent("com.example.moviesawesome.CUSTOM_ACTION");
+//        intentDetail.putExtra("result", result);
+//        startActivity(intentDetail);
     }
 }

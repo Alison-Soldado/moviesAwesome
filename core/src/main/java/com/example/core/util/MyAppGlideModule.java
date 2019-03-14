@@ -1,4 +1,4 @@
-package com.example.main.data.source.remote;
+package com.example.core.util;
 
 import com.bumptech.glide.annotation.GlideModule;
 import com.bumptech.glide.module.AppGlideModule;

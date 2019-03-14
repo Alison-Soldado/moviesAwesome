@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.example.core.data.model.Resource;
 import com.example.core.data.model.movie.Movie;
+import com.example.core.util.SingleLiveEvent;
 
 import java.util.Objects;
 

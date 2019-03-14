@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">core</string>
-    <!-- Error -->
+    <string name="app_name">Movies Awesomes</string>
     <string name="item_generic_error_text">It wasn\'t possible load list</string>
 </resources>

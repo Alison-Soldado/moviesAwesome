@@ -1,6 +1,8 @@
 package com.example.main.ui;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.BottomNavigationView;
@@ -16,11 +18,13 @@ import android.widget.TextView;
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
 import com.example.core.util.ItemOffsetDecoration;
+import com.example.core.util.Router;
 import com.example.main.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressLint("Registered")
 public class MainActivity extends AppCompatActivity
         implements MainAdapter.MainAdapterOnItemClickHandler {
 
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         initComponents();
         initInstance();
-        getList(savedInstanceState);
+        getList(savedInstanceState, PAGE_START);
         setupRecyclerView();
         setupNavigation();
         initObservers();
@@ -71,20 +75,20 @@ public class MainActivity extends AppCompatActivity
         mainAdapter = new MainAdapter(this, this, results);
     }
 
-    private void getList(Bundle savedInstanceState) {
+    private void getList(Bundle savedInstanceState, int page) {
         if (savedInstanceState != null) {
             mainAdapter.addItems(savedInstanceState.getParcelableArrayList("results"));
         } else {
             progressBarMain.setVisibility(View.VISIBLE);
             recyclerMain.setVisibility(View.GONE);
-            mainViewModel.getListMovies(PAGE_START);
+            mainViewModel.getListMovies(page);
         }
     }
 
-    private void getListTopRated() {
+    private void getListTopRated(int page) {
         progressBarMain.setVisibility(View.VISIBLE);
         recyclerMain.setVisibility(View.GONE);
-        mainViewModel.getListMoviesTop(PAGE_START);
+        mainViewModel.getListMoviesTop(page);
     }
 
     private void getMyFavorites() {
@@ -131,10 +135,10 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = item -> {
         if (item.getItemId() == R.id.menu_main_movie_popular) {
-            getList(null);
+            getList(null, PAGE_START);
             return true;
         } else if (item.getItemId() == R.id.menu_main_movie_top_rated) {
-            getListTopRated();
+            getListTopRated(PAGE_START);
             return true;
         } else if (item.getItemId() == R.id.menu_main_movie_my_favorites) {
             getMyFavorites();
@@ -153,8 +157,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(Result result) {
-//        Intent intentDetail = new Intent("com.example.moviesawesome.CUSTOM_ACTION");
-//        intentDetail.putExtra("result", result);
-//        startActivity(intentDetail);
+        startActivity(Router.provideToDetailIntent(result));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.detail.ui;
 
+import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +25,7 @@ import com.example.core.util.AppExecutors;
 import com.example.detail.R;
 
 
+@SuppressLint("Registered")
 public class DetailActivity extends AppCompatActivity
         implements View.OnClickListener {
 

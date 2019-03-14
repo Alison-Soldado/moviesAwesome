@@ -7,8 +7,8 @@ import com.example.core.data.model.Resource;
 import com.example.core.data.model.movie.Movie;
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
+import com.example.core.util.SingleLiveEvent;
 import com.example.main.data.source.remote.MainRepository;
-import com.example.main.data.source.remote.SingleLiveEvent;
 
 import java.util.List;
 

@@ -19,12 +19,14 @@
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".detail.ui.DetailActivity">
+        <activity
+            android:name=".detail.ui.DetailActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".main.ui.MainActivity">
             <intent-filter>
                 <action android:name="com.example.moviesawesome.CUSTOM_ACTION"/>
                 <category android:name="android.intent.category.DEFAULT" />

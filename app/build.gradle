@@ -8,7 +8,6 @@ android {
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
     }
 
@@ -17,13 +16,6 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    }
-
-    def baseUrl = '"https://api.themoviedb.org/3/movie/"'
-
-    buildTypes.each {
-        it.buildConfigField 'String', 'BASE_URL', baseUrl
-        it.buildConfigField 'String', 'API_KEY_MOVIE_DB', apiKeyMovieDb
     }
 
     compileOptions {

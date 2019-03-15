@@ -1,47 +1,14 @@
 apply plugin: 'com.android.feature'
-
-android {
-    compileSdkVersion 27
-
-    defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
-
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-}
-
-ext {
-    glideLibVersion = '4.8.0'
-    archLibVersion = '1.1.1'
-    junitLibVersion = '4.12'
-    runnerLibVersion = '1.0.2'
-    espressoLibVersion = '3.0.2'
-}
+apply from: '../default_config.gradle'
 
 dependencies {
     implementation project(':core')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    annotationProcessor "android.arch.persistence.room:compiler:${archLibVersion}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${glideLibVersion}"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archLibVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideLibVersion"
 
-    testImplementation "junit:junit:${junitLibVersion}"
+    testImplementation "junit:junit:$rootProject.junitLibVersion"
 
-    androidTestImplementation "com.android.support.test:runner:${runnerLibVersion}"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:${espressoLibVersion}"
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
 }

@@ -11,8 +11,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.core.data.model.movie.Result;
@@ -153,6 +156,31 @@ public class MainActivity extends AppCompatActivity
         display.getMetrics(outMetrics);
         float screenWidth = outMetrics.widthPixels;
         return Math.round(screenWidth / posterWidth);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_search, menu);
+        MenuItem search = menu.findItem(R.id.menu_main_search_item);
+        SearchView searchView = (SearchView) search.getActionView();
+        searchTitleRepository(searchView);
+        return true;
+    }
+
+    private void searchTitleRepository(SearchView search) {
+        search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mainAdapter.getFilter().filter(newText);
+                mainAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
     }
 
     @Override

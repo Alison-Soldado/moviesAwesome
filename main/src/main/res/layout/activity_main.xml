@@ -33,7 +33,7 @@
         android:background="@color/colorPrimary"
         app:itemIconTint="@color/colorDivider"
         app:itemTextColor="@color/colorDivider"
-        app:menu="@menu/menu_main" />
+        app:menu="@menu/menu_main_bottom_navigation" />
 
     <include layout="@layout/item_generic_error"/>
 

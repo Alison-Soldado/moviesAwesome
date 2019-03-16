@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">detail</string>
+    <!-- Menu Detail -->
+    <string name="menu_detail_text_share">Share</string>
+    <string name="menu_detail_text">I like very much of</string>
+
+    <!-- Detail -->
+    <string name="activity_detail_text_favorite">mark as favorite</string>
+</resources>

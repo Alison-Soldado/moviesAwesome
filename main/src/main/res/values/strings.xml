@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">main</string>
+    <!-- Menu Main -->
+    <string name="menu_main_text_movie_popular">Popular</string>
+    <string name="menu_main_text_movie_top_rated">Top Rated</string>
+    <string name="menu_main_text_movie_my_favorites">My Favorites</string>
+    <string name="item_main_description_image">Image movie</string>
+    <string name="menu_main_text_search">Search</string>
+</resources>

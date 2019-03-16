@@ -1,0 +1,13 @@
+apply plugin: 'com.android.feature'
+apply from: '../default_config.gradle'
+
+dependencies {
+    implementation project(':core')
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archLibVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideLibVersion"
+
+    testImplementation "junit:junit:$rootProject.junitLibVersion"
+
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
+}

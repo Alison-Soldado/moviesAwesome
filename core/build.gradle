@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+apply from: '../default_config.gradle'
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
+    api "com.android.support:design:$rootProject.supportLibVersion"
+    api "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutLibVersion"
+    api "com.android.support:recyclerview-v7:$rootProject.supportLibVersion"
+    api "com.android.support:cardview-v7:$rootProject.supportLibVersion"
+
+    api "com.squareup.retrofit2:retrofit:$rootProject.retrofitLibVersion"
+    api "com.squareup.retrofit2:converter-gson:$rootProject.retrofitLibVersion"
+
+    api "com.google.code.gson:gson:$rootProject.gsonLibVersion"
+
+    api "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpLibVersion"
+
+    api "com.github.bumptech.glide:glide:$rootProject.glideLibVersion"
+    annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideLibVersion"
+
+    api "android.arch.persistence.room:runtime:$rootProject.archLibVersion"
+    annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archLibVersion"
+
+    api "android.arch.lifecycle:viewmodel:$rootProject.archLibVersion"
+    api "android.arch.lifecycle:runtime:$rootProject.archLibVersion"
+    api "android.arch.lifecycle:common-java8:$rootProject.archLibVersion"
+    api "android.arch.lifecycle:extensions:$rootProject.archLibVersion"
+
+    testImplementation "junit:junit:$rootProject.junitLibVersion"
+
+    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
+    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
+}
+

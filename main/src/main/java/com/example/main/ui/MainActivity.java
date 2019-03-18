@@ -23,6 +23,7 @@ import com.example.core.ui.FavoriteViewModel;
 import com.example.core.util.ItemOffsetDecoration;
 import com.example.core.util.Router;
 import com.example.main.R;
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity
     private BottomNavigationView navigationMain;
     private AppDatabase appDatabase;
     int posterWidth = 500;
+    private FirebaseAnalytics mFirebaseAnalytics;
+    private Bundle bundle = new Bundle();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         setupRecyclerView();
         setupNavigation();
         initObservers();
+        mFirebaseAnalytics.setCurrentScreen(this, MainActivity.class.getName(), null);
     }
 
     @Override
@@ -78,6 +82,7 @@ public class MainActivity extends AppCompatActivity
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel.class);
         mainAdapter = new MainAdapter(this, this, results);
+        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
     }
 
     private void getList(Bundle savedInstanceState, int page) {
@@ -187,6 +192,10 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onItemClick(Result result) {
+        bundle.putLong(FirebaseAnalytics.Param.ITEM_ID, result.getId());
+        bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, result.getTitle());
+        bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, result.getPoster_path());
+        mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
         startActivity(Router.provideToDetailIntent(result));
     }
 }

@@ -1,5 +1,6 @@
 package com.example.core.ui;
 
+import android.arch.lifecycle.LiveData;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,15 +11,15 @@ import com.example.core.R;
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
     private Intent intent;
     private AppDatabase appDatabase;
-    private List<Result> results = new ArrayList<>();
+    private LiveData<List<Result>> results;
 
     FavoriteWidgetDataProvider(@NonNull Context context, Intent intent) {
         this.context = context;
@@ -43,14 +44,18 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
 
     @Override
     public int getCount() {
-        return results.size();
+        if (results.getValue() != null) {
+            return results.getValue().size();
+        } else {
+            return 0;
+        }
     }
 
     @Override
     public RemoteViews getViewAt(int position) {
         RemoteViews view =
                 new RemoteViews(context.getPackageName(), R.layout.item_widget_favorite);
-        view.setTextViewText(R.id.item_widget_favorite_title, results.get(position).getTitle());
+        view.setTextViewText(R.id.item_widget_favorite_title, Objects.requireNonNull(results.getValue()).get(position).getTitle());
         return view;
     }
 
@@ -75,6 +80,6 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
     }
 
     private void initData() {
-        results = (List<Result>) appDatabase.favoriteDao().getAllFavorites();
+        results = appDatabase.favoriteDao().getAllFavorites();
     }
 }

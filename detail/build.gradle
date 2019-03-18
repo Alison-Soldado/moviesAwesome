@@ -12,3 +12,5 @@ dependencies {
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
 }
+
+apply plugin: 'com.google.gms.google-services'

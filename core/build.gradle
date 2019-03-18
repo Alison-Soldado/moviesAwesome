@@ -27,6 +27,8 @@ dependencies {
     api "android.arch.lifecycle:common-java8:$rootProject.archLibVersion"
     api "android.arch.lifecycle:extensions:$rootProject.archLibVersion"
 
+    api "com.google.firebase:firebase-core:$rootProject.coreFirebaseVersion"
+
     testImplementation "junit:junit:$rootProject.junitLibVersion"
 
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"

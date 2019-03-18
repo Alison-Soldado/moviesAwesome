@@ -2,7 +2,6 @@ package com.example.main.ui;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.BottomNavigationView;
@@ -20,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
+import com.example.core.ui.FavoriteViewModel;
 import com.example.core.util.ItemOffsetDecoration;
 import com.example.core.util.Router;
 import com.example.main.R;
@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private ProgressBar progressBarMain;
     private MainAdapter mainAdapter;
     private MainViewModel mainViewModel;
+    private FavoriteViewModel favoriteViewModel;
     private TextView textViewError;
     private List<Result> results = new ArrayList<>();
     private BottomNavigationView navigationMain;
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity
     private void initInstance() {
         appDatabase = AppDatabase.getInstance(getApplicationContext());
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+        favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel.class);
         mainAdapter = new MainAdapter(this, this, results);
     }
 
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void getMyFavorites() {
-        mainViewModel.getListFavorites(appDatabase).observe(this, favorite -> {
+        favoriteViewModel.getListFavorites(appDatabase).observe(this, favorite -> {
             if (favorite != null) {
                 mainAdapter.addItems(favorite);
                 textViewError.setVisibility(View.GONE);

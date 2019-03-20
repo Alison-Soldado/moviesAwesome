@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Movies Awesomes</string>
     <string name="item_generic_error_text">It wasn\'t possible load list</string>
-    <string name="appwidget_text">EXAMPLE</string>
-    <string name="add_widget">Add widget</string>
+    <string name="id_admob_banner">ca-app-pub-3122145205843130/1733664902</string>
+    <string name="id_admob_banner_test">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="id_block_announce">ca-app-pub-3122145205843130/3799509320</string>
+    <string name="id_admob_aplication">ca-app-pub-3122145205843130~1556489360</string>
 </resources>

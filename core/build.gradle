@@ -28,10 +28,12 @@ dependencies {
     api "android.arch.lifecycle:extensions:$rootProject.archLibVersion"
 
     api "com.google.firebase:firebase-core:$rootProject.coreFirebaseVersion"
+    api ("com.google.android.gms:play-services-ads:$rootProject.admobFirebaseVersion") {
+        exclude group: 'com.android.support'
+    }
 
     testImplementation "junit:junit:$rootProject.junitLibVersion"
 
     androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
 }
-

@@ -35,4 +35,5 @@ ext {
     runnerLibVersion = '1.0.2'
     espressoLibVersion = '3.0.2'
     coreFirebaseVersion = '16.0.8'
+    admobFirebaseVersion = '17.2.0'
 }

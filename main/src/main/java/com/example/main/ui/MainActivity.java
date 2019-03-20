@@ -23,6 +23,9 @@ import com.example.core.ui.FavoriteViewModel;
 import com.example.core.util.ItemOffsetDecoration;
 import com.example.core.util.Router;
 import com.example.main.R;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
@@ -46,6 +49,7 @@ public class MainActivity extends AppCompatActivity
     int posterWidth = 500;
     private FirebaseAnalytics mFirebaseAnalytics;
     private Bundle bundle = new Bundle();
+    private AdView adView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,7 @@ public class MainActivity extends AppCompatActivity
         setupRecyclerView();
         setupNavigation();
         initObservers();
+        loadAdRequest();
         mFirebaseAnalytics.setCurrentScreen(this, MainActivity.class.getName(), null);
     }
 
@@ -75,6 +80,7 @@ public class MainActivity extends AppCompatActivity
         progressBarMain = findViewById(R.id.activity_main_progress_bar);
         navigationMain = findViewById(R.id.activity_main_navigation);
         textViewError = findViewById(R.id.item_generic_error_text);
+        adView = findViewById(R.id.activity_main_adview);
     }
 
     private void initInstance() {
@@ -83,6 +89,7 @@ public class MainActivity extends AppCompatActivity
         favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel.class);
         mainAdapter = new MainAdapter(this, this, results);
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
+        MobileAds.initialize(this, getString(R.string.id_admob_aplication));
     }
 
     private void getList(Bundle savedInstanceState, int page) {
@@ -197,5 +204,36 @@ public class MainActivity extends AppCompatActivity
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, result.getPoster_path());
         mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle);
         startActivity(Router.provideToDetailIntent(result));
+    }
+
+    @Override
+    protected void onPause() {
+        if (adView != null) {
+            adView.resume();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adView != null) {
+            adView.resume();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView != null) {
+            adView.destroy();
+        }
+        super.onDestroy();
+    }
+
+    private void loadAdRequest() {
+        AdRequest adRequest = new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build();
+        adView.loadAd(adRequest);
     }
 }

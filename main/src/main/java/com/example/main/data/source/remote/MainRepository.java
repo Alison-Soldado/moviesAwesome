@@ -13,11 +13,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainRepository {
+public class MainRepository implements DataSourceMainRepository {
 
     private WebServiceMain webService = new ApiUtilsMain().getListMovieService();
 
-    public void getMovie(SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent, Integer page) {
+    @Override
+    public void getMovies(SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent, Integer page) {
         webService.getMoviePopular(page).enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {
@@ -31,7 +32,8 @@ public class MainRepository {
         });
     }
 
-    public void getMovieTop(SingleLiveEvent<Resource<Movie>> movieTopSingleLiveEvent, Integer page) {
+    @Override
+    public void getTopMovies(SingleLiveEvent<Resource<Movie>> movieTopSingleLiveEvent, Integer page) {
         webService.getMovieTopRated(page).enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(@NonNull Call<Movie> call, @NonNull Response<Movie> response) {

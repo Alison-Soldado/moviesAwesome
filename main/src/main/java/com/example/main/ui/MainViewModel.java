@@ -12,11 +12,11 @@ public class MainViewModel extends ViewModel {
     SingleLiveEvent<Resource<Movie>> movieSingleLiveEvent = new SingleLiveEvent<>();
     private MainRepository mainRepository = new MainRepository();
 
-    void getListMovies(Integer page) {
-        mainRepository.getMovie(movieSingleLiveEvent, page);
+    public void getListMovies(Integer page) {
+        mainRepository.getMovies(movieSingleLiveEvent, page);
     }
 
-    void getListMoviesTop(Integer page) {
-        mainRepository.getMovieTop(movieSingleLiveEvent, page);
+    public void getListMoviesTop(Integer page) {
+        mainRepository.getTopMovies(movieSingleLiveEvent, page);
     }
 }

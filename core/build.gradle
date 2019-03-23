@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply from: '../default_config.gradle'
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
     api "com.android.support:appcompat-v7:$rootProject.supportLibVersion"
     api "com.android.support:design:$rootProject.supportLibVersion"
     api "com.android.support.constraint:constraint-layout:$rootProject.constraintLayoutLibVersion"
@@ -32,8 +31,6 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
-    testImplementation "junit:junit:$rootProject.junitLibVersion"
-
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
+    testImplementation project(':test')
+    androidTestImplementation project(':test')
 }

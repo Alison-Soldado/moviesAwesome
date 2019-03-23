@@ -27,10 +27,6 @@ android {
 dependencies {
     implementation project(':main')
     implementation project(':detail')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    testImplementation "junit:junit:$rootProject.junitLibVersion"
-
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
+    testImplementation project(':test')
+    androidTestImplementation project(':test')
 }

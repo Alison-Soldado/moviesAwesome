@@ -3,14 +3,11 @@ apply from: '../default_config.gradle'
 
 dependencies {
     implementation project(':core')
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation project(':test')
+    androidTestImplementation project(':test')
+
     annotationProcessor "android.arch.persistence.room:compiler:$rootProject.archLibVersion"
     annotationProcessor "com.github.bumptech.glide:compiler:$rootProject.glideLibVersion"
-
-    testImplementation "junit:junit:$rootProject.junitLibVersion"
-
-    androidTestImplementation "com.android.support.test:runner:$rootProject.runnerLibVersion"
-    androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
 }
 
 apply plugin: 'com.google.gms.google-services'

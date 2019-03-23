@@ -1,0 +1,12 @@
+apply plugin: 'com.android.library'
+apply from: '../default_config.gradle'
+
+dependencies {
+    implementation project(':core')
+    api "junit:junit:$rootProject.junitLibVersion"
+    api "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    api "br.com.concretesolutions:requestmatcher:$rootProject.requestMatcherVersion"
+    api "com.android.support.test:rules:$rootProject.runnerLibVersion"
+    api "com.android.support.test:runner:$rootProject.runnerLibVersion"
+    api "com.android.support.test.espresso:espresso-core:$rootProject.espressoLibVersion"
+}

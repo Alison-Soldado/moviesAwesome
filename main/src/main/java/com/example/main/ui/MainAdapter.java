@@ -25,7 +25,6 @@ public class MainAdapter extends
     private final MainAdapterOnItemClickHandler clickHandler;
     private List<Result> results;
     private List<Result> listResultsFilter;
-    private String urlImage = "http://image.tmdb.org/t/p/";
 
     MainAdapter(@NonNull Context context, MainAdapterOnItemClickHandler clickHandler, List<Result> results) {
         this.context = context;
@@ -45,6 +44,7 @@ public class MainAdapter extends
     public void onBindViewHolder(@NonNull MainAdapterViewHolder holder, int position) {
         String WIDTH_IMAGE = "w342";
 
+        String urlImage = "http://image.tmdb.org/t/p/";
         GlideApp
                 .with(context)
                 .load(urlImage.concat(WIDTH_IMAGE).concat(listResultsFilter.get(position).getPoster_path()))

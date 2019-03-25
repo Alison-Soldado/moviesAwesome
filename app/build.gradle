@@ -11,10 +11,60 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            if (System.getenv("KEYSTORE") != null) {
+                storeFile file(System.getenv("KEYSTORE"))
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
             minifyEnabled false
+            useProguard false
+            shrinkResources false
+            debuggable false
+            zipAlignEnabled false
+            testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            useProguard true
+            debuggable false
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            testProguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguardTest-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        free {
+            applicationId "com.example.moviesawesome.free"
+            versionCode 1
+            versionName "1.0"
+            applicationIdSuffix ".free"
+            versionNameSuffix "-free"
+            dimension "default"
+        }
+
+        paid {
+            applicationId "com.example.moviesawesome.paid"
+            versionCode 1
+            versionName "1.0"
+            applicationIdSuffix ".paid"
+            versionNameSuffix "-paid"
+            dimension "default"
         }
     }
 

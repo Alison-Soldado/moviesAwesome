@@ -26,7 +26,9 @@ dependencies {
     api "android.arch.lifecycle:common-java8:$rootProject.archLibVersion"
     api "android.arch.lifecycle:extensions:$rootProject.archLibVersion"
 
-    api "com.google.firebase:firebase-core:$rootProject.coreFirebaseVersion"
+    api ("com.google.firebase:firebase-core:$rootProject.coreFirebaseVersion") {
+        exclude group: 'com.android.support'
+    }
     api ("com.google.android.gms:play-services-ads:$rootProject.admobFirebaseVersion") {
         exclude group: 'com.android.support'
     }

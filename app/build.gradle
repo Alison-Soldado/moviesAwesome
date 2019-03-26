@@ -33,7 +33,7 @@ android {
             minifyEnabled false
             useProguard false
             shrinkResources false
-            debuggable false
+            debuggable true
             zipAlignEnabled false
             testCoverageEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

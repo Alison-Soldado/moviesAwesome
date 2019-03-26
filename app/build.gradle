@@ -12,18 +12,24 @@ android {
     }
 
     signingConfigs {
+        debug {
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file("$rootDir/distribution/debug/app-free-debug.keystore")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+        }
+
         release {
-            if (System.getenv("KEYSTORE") != null) {
-                storeFile file(System.getenv("KEYSTORE"))
-                storePassword System.getenv("KEYSTORE_PASSWORD")
-                keyAlias System.getenv("KEY_ALIAS")
-                keyPassword System.getenv("KEY_PASSWORD")
-            }
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file("$rootDir/distribution/release/app-free-release.keystore")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
         }
     }
 
     buildTypes {
         debug {
+            signingConfig signingConfigs.debug
             minifyEnabled false
             useProguard false
             shrinkResources false

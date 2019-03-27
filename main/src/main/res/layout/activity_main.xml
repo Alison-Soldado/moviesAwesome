@@ -15,6 +15,7 @@
         tools:layoutManager="android.support.v7.widget.GridLayoutManager"
         tools:spanCount="2"
         tools:listitem="@layout/item_main"
+        android:focusable="true"
         android:contentDescription="@string/activity_main_list_movies_text_accessibility"/>
 
     <ProgressBar

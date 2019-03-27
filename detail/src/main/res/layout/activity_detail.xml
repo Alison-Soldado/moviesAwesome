@@ -32,6 +32,7 @@
                     android:id="@+id/activity_detail_image_movie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:focusable="true"
                     android:contentDescription="@string/activity_detail_banner_movie_text_accessibility"
                     android:src="@mipmap/ic_launcher"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -101,6 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
+        android:focusable="true"
         android:contentDescription="@string/activity_detail_mark_favorite_text_accessibility"
         app:layout_anchor="@id/activity_detail_app_bar"
         app:layout_anchorGravity="bottom|end"/>

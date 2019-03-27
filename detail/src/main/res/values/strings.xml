@@ -7,4 +7,5 @@
     <!-- Detail -->
     <string name="activity_detail_text_favorite">mark as favorite</string>
     <string name="activity_detail_screen_detail_text_accessibility">This is the movie detail screen</string>
+    <string name="activity_detail_mark_favorite_text_accessibility">This is button for mark as favorite</string>
 </resources>

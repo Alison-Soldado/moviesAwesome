@@ -17,16 +17,5 @@
 
         <service android:name=".ui.FavoriteWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service android:name=".util.MyService" />
-
-        <receiver android:exported="false"
-            android:name=".util.CheckConnectivity" >
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"
-                    tools:ignore="BatteryLife" />
-            </intent-filter>
-        </receiver>
     </application>
-
 </manifest>

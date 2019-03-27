@@ -2,6 +2,7 @@ package com.example.main.ui;
 
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.design.widget.BottomNavigationView;
@@ -21,6 +22,7 @@ import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
 import com.example.core.ui.FavoriteViewModel;
 import com.example.core.util.ItemOffsetDecoration;
+import com.example.core.util.MyService;
 import com.example.core.util.Router;
 import com.example.main.R;
 import com.google.android.gms.ads.AdRequest;
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity
         initObservers();
         loadAdRequest();
         mFirebaseAnalytics.setCurrentScreen(this, MainActivity.class.getName(), null);
+        startService(new Intent(getBaseContext(), MyService.class));
     }
 
     @Override

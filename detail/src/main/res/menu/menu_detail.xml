@@ -7,5 +7,5 @@
         android:id="@+id/menu_detail_share"
         android:title="@string/menu_detail_text_share"
         android:orderInCategory="1"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 </menu>

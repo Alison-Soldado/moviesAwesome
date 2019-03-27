@@ -30,9 +30,14 @@
 
                 <ImageView
                     android:id="@+id/activity_detail_image_movie"
-                    android:src="@mipmap/ic_launcher"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/activity_detail_banner_movie_text_accessibility"
+                    android:src="@mipmap/ic_launcher"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/activity_detail_description"

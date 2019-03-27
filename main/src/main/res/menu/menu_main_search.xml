@@ -9,7 +9,7 @@
         android:id="@+id/menu_main_search_item"
         android:title="@string/menu_main_text_search"
         android:icon="@drawable/ic_search"
-        app:showAsAction="ifRoom"
+        app:showAsAction="always"
         app:actionViewClass="android.widget.SearchView"
         android:orderInCategory="100"/>
 </menu>

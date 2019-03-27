@@ -8,4 +8,7 @@
     <string name="activity_detail_text_favorite">mark as favorite</string>
     <string name="activity_detail_screen_detail_text_accessibility">This is the movie detail screen</string>
     <string name="activity_detail_mark_favorite_text_accessibility">This is button for mark as favorite</string>
+    <string name="activity_detail_banner_movie_text_accessibility">This is a banner movie</string>
+    <string name="item_review_image_reviewer_accessibility">This is a image of reviewer</string>
+    <string name="item_trailer_image_trailer_accessibility">This is a image of trailer</string>
 </resources>

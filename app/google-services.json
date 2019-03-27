@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "883722275055",
+    "firebase_url": "https://moviesawesome-dd241.firebaseio.com",
+    "project_id": "moviesawesome-dd241",
+    "storage_bucket": "moviesawesome-dd241.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:883722275055:android:72a856c5f01fd45f",
+        "android_client_info": {
+          "package_name": "com.example.moviesawesome"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "883722275055-omfd6cdmhlraqd7ovbmgb1onraufhiir.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moviesawesome",
+            "certificate_hash": "fc7c0ab3c53f37ef42a26f54e9a8a3831b727eb6"
+          }
+        },
+        {
+          "client_id": "883722275055-gjb7pp1igli1j3k7q11sft9silk4e0tf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDC78SbcGZQ9rrG6a7pQXC8L1XaPnw1aQ0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "883722275055-gjb7pp1igli1j3k7q11sft9silk4e0tf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      },
+      "admob_app_id": "ca-app-pub-3122145205843130~1556489360"
+    }
+  ],
+  "configuration_version": "1"
+}

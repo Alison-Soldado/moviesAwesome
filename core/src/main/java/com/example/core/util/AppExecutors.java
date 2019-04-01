@@ -9,15 +9,21 @@ import java.util.concurrent.Executors;
 
 public class AppExecutors {
     private static final Object LOCK = new Object();
+    private static final int THREAD_COUNT = 3;
     private static AppExecutors sInstance;
     private final Executor diskIO;
     private final Executor mainThread;
     private final Executor networkIO;
 
-    private AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
+    public AppExecutors(Executor diskIO, Executor networkIO, Executor mainThread) {
         this.diskIO = diskIO;
         this.networkIO = networkIO;
         this.mainThread = mainThread;
+    }
+
+    public AppExecutors() {
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(THREAD_COUNT),
+                new MainThreadExecutor());
     }
 
     public static AppExecutors getInstance() {

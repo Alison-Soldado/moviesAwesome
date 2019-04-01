@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v7.widget.AppCompatTextView
     android:background="@android:color/darker_gray"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/item_widget_favorite_title"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <android.support.v7.widget.AppCompatTextView
-        android:id="@+id/item_widget_favorite_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:padding="8dp"
-        android:maxLines="2"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        tools:text="@tools:sample/lorem/random" />
-</LinearLayout>
+    android:layout_height="wrap_content"
+    android:ellipsize="end"
+    android:padding="8dp"
+    android:maxLines="2"
+    android:textAlignment="center"
+    android:gravity="center"
+    android:textColor="@android:color/white"
+    tools:text="@tools:sample/lorem/random" />

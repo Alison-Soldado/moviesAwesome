@@ -17,6 +17,9 @@ public interface FavoriteDao {
     @Query("SELECT * FROM result")
     LiveData<List<Result>> getAllFavorites();
 
+    @Query("SELECT * FROM result")
+    List<Result> getAllFavoritesWidget();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Long insertFavorite(Result result);
 

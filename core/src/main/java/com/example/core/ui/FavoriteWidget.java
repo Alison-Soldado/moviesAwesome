@@ -38,7 +38,7 @@ public class FavoriteWidget extends AppWidgetProvider {
     public void onDisabled(Context context) {}
 
     private static void setRemoteAdapter(Context context, @NonNull final RemoteViews views) {
-        views.setRemoteAdapter(R.id.widget_favorite_recycler_movie,
+        views.setRemoteAdapter(R.id.widget_favorite_grid,
                 new Intent(context, FavoriteWidgetService.class));
     }
 }

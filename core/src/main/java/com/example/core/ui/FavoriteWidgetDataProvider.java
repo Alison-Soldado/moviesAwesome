@@ -1,45 +1,52 @@
 package com.example.core.ui;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
 import com.example.core.R;
 import com.example.core.data.model.movie.Result;
 import com.example.core.data.source.local.AppDatabase;
+import com.example.core.data.source.local.detail.FavoriteDao;
+import com.example.core.util.AppExecutors;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Observable;
+import java.util.Observer;
 
 public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
-    private Intent intent;
-    private AppDatabase appDatabase;
     private LiveData<List<Result>> results;
+    private AppExecutors executors = new AppExecutors();
+    private FavoriteDao favoriteDao;
 
-    FavoriteWidgetDataProvider(@NonNull Context context, Intent intent) {
+    FavoriteWidgetDataProvider(@NonNull Context context) {
         this.context = context;
-        this.intent = intent;
-        this.appDatabase = AppDatabase.getInstance(context.getApplicationContext());
+        favoriteDao = Room.databaseBuilder(context, AppDatabase.class, "favoriteDatabase")
+                .build()
+                .favoriteDao();
     }
 
     @Override
     public void onCreate() {
-        initData();
+        executors.diskIO().execute(() -> results = favoriteDao.getAllFavorites());
     }
 
     @Override
     public void onDataSetChanged() {
-        initData();
+        executors.diskIO().execute(() -> results = favoriteDao.getAllFavorites());
     }
 
     @Override
     public void onDestroy() {
-
+        favoriteDao = null;
     }
 
     @Override
@@ -55,7 +62,11 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
     public RemoteViews getViewAt(int position) {
         RemoteViews view =
                 new RemoteViews(context.getPackageName(), R.layout.item_widget_favorite);
-        view.setTextViewText(R.id.item_widget_favorite_title, Objects.requireNonNull(results.getValue()).get(position).getTitle());
+        if (results.getValue() != null) {
+            view.setTextViewText(R.id.item_widget_favorite_title, results.getValue().get(position).getTitle());
+        } else {
+            view.setTextViewText(R.id.item_widget_favorite_title, "Nothing");
+        }
         return view;
     }
 
@@ -77,9 +88,5 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
     @Override
     public boolean hasStableIds() {
         return true;
-    }
-
-    private void initData() {
-        results = appDatabase.favoriteDao().getAllFavorites();
     }
 }

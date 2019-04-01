@@ -77,4 +77,5 @@ dependencies {
     implementation project(':detail')
     testImplementation project(':test')
     androidTestImplementation project(':test')
+    compile project(path: ':core')
 }

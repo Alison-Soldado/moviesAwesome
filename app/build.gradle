@@ -15,7 +15,7 @@ android {
         release {
             keyAlias 'test'
             keyPassword 'test'
-            storeFile file("$rootDir/distribution/release/app-free-release.keystore")
+            storeFile file("$rootDir/distribution/moviesAwesome.jks")
             storePassword '123456'
         }
     }

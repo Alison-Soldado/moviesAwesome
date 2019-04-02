@@ -23,6 +23,12 @@ import com.example.core.ui.FavoriteViewModel;
 import com.example.core.util.ItemOffsetDecoration;
 import com.example.core.util.Router;
 import com.example.main.R;
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
+import com.firebase.jobdispatcher.Lifetime;
+import com.firebase.jobdispatcher.RetryStrategy;
+import com.firebase.jobdispatcher.Trigger;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -62,7 +68,21 @@ public class MainActivity extends AppCompatActivity
         setupNavigation();
         initObservers();
         loadAdRequest();
+        setupJob();
         mFirebaseAnalytics.setCurrentScreen(this, MainActivity.class.getName(), null);
+    }
+
+    private void setupJob() {
+        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
+        Job job = dispatcher.newJobBuilder()
+                .setService(JobServiceCheckNetwork.class)
+                .setTag("connectivity-job")
+                .setLifetime(Lifetime.FOREVER)
+                .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
+                .setRecurring(true).setReplaceCurrent(true)
+                .setTrigger(Trigger.executionWindow(0, 0))
+                .build();
+        dispatcher.mustSchedule(job);
     }
 
     @Override

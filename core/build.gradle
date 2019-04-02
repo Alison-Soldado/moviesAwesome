@@ -33,6 +33,8 @@ dependencies {
         exclude group: 'com.android.support'
     }
 
+    api 'com.firebase:firebase-jobdispatcher:0.8.6'
+
     testImplementation project(':test')
     androidTestImplementation project(':test')
 }

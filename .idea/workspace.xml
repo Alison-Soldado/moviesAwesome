@@ -7,22 +7,13 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="169abcc9-f780-411d-959c-c7c4e02eac3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidget.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetDataProvider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_widget_favorite.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/widget_favorite.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/JobServiceCheckNetwork.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.10.1/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
@@ -30,19 +21,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/app/app.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/core/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/example/core/data/source/local/detail/FavoriteDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/example/core/data/source/local/detail/FavoriteDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidget.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetDataProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetDataProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/com/example/core/util/AppExecutors.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/com/example/core/util/AppExecutors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/res/layout/item_widget_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/res/layout/item_widget_favorite.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/res/layout/widget_favorite.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/res/layout/widget_favorite.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/detail/detail.iml" beforeDir="false" afterPath="$PROJECT_DIR$/detail/detail.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main/main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/main/main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/test/test.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -172,18 +157,18 @@
         <counts>
           <entry key="bat" value="1" />
           <entry key="class" value="4" />
-          <entry key="gitignore" value="8" />
-          <entry key="gradle" value="98" />
+          <entry key="gitignore" value="9" />
+          <entry key="gradle" value="99" />
           <entry key="gradlew" value="3" />
           <entry key="iml" value="4" />
-          <entry key="java" value="258" />
+          <entry key="java" value="264" />
           <entry key="json" value="10" />
           <entry key="md" value="2" />
           <entry key="png" value="1" />
           <entry key="pro" value="3" />
           <entry key="properties" value="5" />
           <entry key="txt" value="1" />
-          <entry key="xml" value="193" />
+          <entry key="xml" value="197" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
@@ -191,36 +176,36 @@
           <entry key="Bash" value="3" />
           <entry key="Bat" value="1" />
           <entry key="CLASS" value="4" />
-          <entry key="Groovy" value="98" />
+          <entry key="Groovy" value="99" />
           <entry key="IDEA_MODULE" value="4" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="258" />
+          <entry key="JAVA" value="264" />
           <entry key="JSON" value="10" />
           <entry key="Markdown" value="2" />
-          <entry key="PLAIN_TEXT" value="9" />
+          <entry key="PLAIN_TEXT" value="10" />
           <entry key="ProGuard File" value="3" />
           <entry key="Properties" value="5" />
-          <entry key="XML" value="193" />
+          <entry key="XML" value="197" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="32" />
-          <entry key="gradle" value="1100" />
-          <entry key="java" value="5558" />
+          <entry key="dummy" value="49" />
+          <entry key="gradle" value="1105" />
+          <entry key="java" value="5972" />
           <entry key="json" value="2" />
           <entry key="md" value="30" />
-          <entry key="xml" value="2180" />
+          <entry key="xml" value="2191" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Groovy" value="1100" />
-          <entry key="JAVA" value="5558" />
+          <entry key="Groovy" value="1105" />
+          <entry key="JAVA" value="5972" />
           <entry key="JSON" value="2" />
           <entry key="Markdown" value="30" />
-          <entry key="PLAIN_TEXT" value="32" />
-          <entry key="XML" value="2180" />
+          <entry key="PLAIN_TEXT" value="49" />
+          <entry key="XML" value="2191" />
         </counts>
       </usages-collector>
     </session>
@@ -228,114 +213,105 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetDataProvider.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-588">
-              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/example/core/data/source/local/AppDatabase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="36" selection-end-line="25" selection-end-column="49" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidget.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="741">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Android/Sdk/sources/android-28/android/content/ComponentName.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="128" column="11" selection-start-line="128" selection-start-column="11" selection-end-line="128" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/java/com/example/core/data/source/local/detail/FavoriteDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="20" column="32" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/src/main/res/layout/item_generic_error.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="50" />
-              <folding>
-                <element signature="e#175#208#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_widget_favorite.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_favorite.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="49" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="49" />
+            <state relative-caret-position="304">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
                 <element signature="e#1143#1176#0" expanded="true" />
               </folding>
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="244">
+              <caret line="130" column="12" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.6/74a9f39ac400680019db9a3c00083d20b064b936/firebase-jobdispatcher-0.8.6-sources.jar!/com/firebase/jobdispatcher/Constraint.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="81" column="110" selection-start-line="81" selection-start-column="110" selection-end-line="81" selection-end-column="110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/main/java/com/example/main/ui/JobServiceCheckNetwork.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="59" column="32" lean-forward="true" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1277#1575#0" expanded="true" />
+                <element signature="e#1574#1575#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/core/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="38">
+              <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider editor-type-id="android-manifest" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="608">
+              <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.6/74a9f39ac400680019db9a3c00083d20b064b936/firebase-jobdispatcher-0.8.6-sources.jar!/com/firebase/jobdispatcher/FirebaseJobDispatcher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="301">
+              <caret line="133" column="21" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
+              <folding>
+                <element signature="e#4543#4544#0" expanded="true" />
+                <element signature="e#4586#4587#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -378,11 +354,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/main/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/core/src/main/res/values/strings.xml" />
-        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainAdapter.java" />
-        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/data/source/remote/DataSourceMainRepository.java" />
-        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/data/source/remote/MainRepository.java" />
         <option value="$PROJECT_DIR$/main/src/androidTest/assets/success_list_movies.json" />
         <option value="$PROJECT_DIR$/main/build.gradle" />
         <option value="$PROJECT_DIR$/detail/build.gradle" />
@@ -394,7 +365,6 @@
         <option value="$PROJECT_DIR$/test/build.gradle" />
         <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainViewModel.java" />
         <option value="$PROJECT_DIR$/main/src/test/java/com/example/main/MainViewModelTest.java" />
-        <option value="$PROJECT_DIR$/core/build.gradle" />
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/main/src/androidTest/java/com/example/main/MainActivityTest.java" />
         <option value="$PROJECT_DIR$/README.md" />
@@ -404,7 +374,6 @@
         <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/util/MyService.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/util/CheckConnectivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/NewAppWidget.java" />
-        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java" />
         <option value="$PROJECT_DIR$/detail/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/main/src/main/res/menu/menu_main_search.xml" />
         <option value="$PROJECT_DIR$/main/src/main/res/menu/menu_main_bottom_navigation.xml" />
@@ -423,12 +392,19 @@
         <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetDataProvider.java" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/ui/FavoriteWidgetService.java" />
         <option value="$PROJECT_DIR$/core/src/main/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/data/source/local/detail/FavoriteDao.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidget.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetDataProvider.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/item_widget_favorite.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetDataProvider.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/xml/favorite_widget_info.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/widget_favorite.xml" />
+        <option value="$PROJECT_DIR$/core/build.gradle" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/util/ConnectionChecker.java" />
+        <option value="$PROJECT_DIR$/core/src/main/java/com/example/core/util/JobInvocation.java" />
+        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/JobService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/JobServiceCheckNetwork.java" />
+        <option value="$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java" />
       </list>
     </option>
   </component>
@@ -507,6 +483,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="moviesAwesome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="moviesAwesome" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="moviesAwesome" type="b2602c69:ProjectViewProjectNode" />
@@ -600,6 +585,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="res" type="462c0819:PsiDirectoryNode" />
               <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="moviesAwesome" type="b2602c69:ProjectViewProjectNode" />
+              <item name="moviesAwesome" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="core" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="xml" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="moviesAwesome" type="b2602c69:ProjectViewProjectNode" />
@@ -724,7 +718,7 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="device.picker.selection" value="0041068343" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Famula" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PopularMovies-Stage2-master/PopularMoviesApp-Stage2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1549570754229" />
@@ -744,11 +738,11 @@
       <recent name="com.example.test" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res" />
       <recent name="$PROJECT_DIR$/app/src/main/res/layout" />
       <recent name="$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/core/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/main/src/main/res/menu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.core.util" />
@@ -1024,7 +1018,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1918" y="-1" width="1924" height="1082" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49634275" visible="true" weight="0.23585913" />
@@ -1036,7 +1029,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Run" order="0" weight="0.3291536" />
       <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.4994664" weight="0.3291536" />
-      <window_info anchor="bottom" id="Debug" order="2" visible="true" weight="0.3291536" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.3291536" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.26959246" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50053364" side_tool="true" weight="0.3291536" />
       <window_info anchor="bottom" id="Version Control" order="5" sideWeight="0.49893278" weight="0.3260188" />
@@ -1087,58 +1080,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/dimens.xml" />
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="58" selection-start-line="8" selection-start-column="58" selection-end-line="8" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/default_config.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="60" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="18" column="33" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/detail/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/res/menu/menu_main_search.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="8" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/res/menu/menu_main_bottom_navigation.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/core/src/main/res/drawable/ic_placeholder_black.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="76">
@@ -1226,13 +1167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1578">
-          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/main/src/main/res/layout/activity_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
@@ -1310,13 +1244,6 @@
     <entry file="file://$PROJECT_DIR$/test/src/main/java/com/example/test/BaseRobotTest.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2040">
-          <caret line="88" column="41" selection-start-line="88" selection-start-column="41" selection-end-line="88" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/app.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1335,22 +1262,6 @@
             <element signature="e#1480#1481#0" expanded="true" />
             <element signature="e#1497#1498#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider editor-type-id="android-manifest" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="684">
-          <caret line="52" column="77" selection-start-line="52" selection-start-column="77" selection-end-line="52" selection-end-column="77" />
         </state>
       </provider>
     </entry>
@@ -1396,35 +1307,6 @@
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_widget_favorite.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidget.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_favorite.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="49" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="49" />
-          <folding>
-            <element signature="e#1143#1176#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -1437,11 +1319,160 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidgetDataProvider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-588">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="286">
+          <caret line="59" column="71" selection-start-line="59" selection-start-column="71" selection-end-line="59" selection-end-column="71" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/moviesawesome/free/free/FavoriteWidget.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-37">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/item_widget_favorite.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="51" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="51" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/xml/favorite_widget_info.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="8" column="40" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/widget_favorite.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#1143#1176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="130" column="12" selection-start-line="130" selection-start-column="12" selection-end-line="130" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="35" column="7" selection-start-line="35" selection-start-column="7" selection-end-line="35" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/example/core/util/ConnectionChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#371#372#0" expanded="true" />
+            <element signature="e#409#410#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/java/com/example/core/util/JobInvocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1666">
+          <caret line="129" column="43" lean-forward="true" selection-start-line="129" selection-start-column="43" selection-end-line="129" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1036#1037#0" expanded="true" />
+            <element signature="e#1066#1067#0" expanded="true" />
+            <element signature="e#1123#1124#0" expanded="true" />
+            <element signature="e#1149#1150#0" expanded="true" />
+            <element signature="e#1214#1215#0" expanded="true" />
+            <element signature="e#1244#1245#0" expanded="true" />
+            <element signature="e#1290#1291#0" expanded="true" />
+            <element signature="e#1321#1322#0" expanded="true" />
+            <element signature="e#1371#1372#0" expanded="true" />
+            <element signature="e#1403#1404#0" expanded="true" />
+            <element signature="e#1467#1468#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#1561#1562#0" expanded="true" />
+            <element signature="e#1590#1591#0" expanded="true" />
+            <element signature="e#1664#1665#0" expanded="true" />
+            <element signature="e#1700#1701#0" expanded="true" />
+            <element signature="e#1759#1760#0" expanded="true" />
+            <element signature="e#1796#1797#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.6/74a9f39ac400680019db9a3c00083d20b064b936/firebase-jobdispatcher-0.8.6-sources.jar!/com/firebase/jobdispatcher/Constraint.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="66" column="20" selection-start-line="66" selection-start-column="20" selection-end-line="66" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/core/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/java/com/example/main/ui/JobServiceCheckNetwork.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="59" column="32" lean-forward="true" selection-start-line="59" selection-start-column="32" selection-end-line="59" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1277#1575#0" expanded="true" />
+            <element signature="e#1574#1575#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.firebase/firebase-jobdispatcher/0.8.6/74a9f39ac400680019db9a3c00083d20b064b936/firebase-jobdispatcher-0.8.6-sources.jar!/com/firebase/jobdispatcher/FirebaseJobDispatcher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="133" column="21" selection-start-line="133" selection-start-column="21" selection-end-line="133" selection-end-column="21" />
+          <folding>
+            <element signature="e#4543#4544#0" expanded="true" />
+            <element signature="e#4586#4587#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="56" column="57" selection-start-line="56" selection-start-column="57" selection-end-line="56" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main/src/main/java/com/example/main/ui/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="81" column="110" selection-start-line="81" selection-start-column="110" selection-end-line="81" selection-end-column="110" />
         </state>
       </provider>
     </entry>

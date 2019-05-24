@@ -4,8 +4,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/br.com.concretesolutions/requestmatcher/2.2.0/25a346779e125ccb2e1fb0d159cb92846076794d/requestmatcher-2.2.0.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/br.com.concretesolutions/requestmatcher/2.2.0/40f4e6fb0488f22ca1225762e7a28cbc1e53eceb/requestmatcher-2.2.0-sources.jar!/" />
-    </SOURCES>
+    <SOURCES />
   </library>
 </component>

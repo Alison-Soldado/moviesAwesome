@@ -68,21 +68,7 @@ public class MainActivity extends AppCompatActivity
         setupNavigation();
         initObservers();
         loadAdRequest();
-        setupJob();
         mFirebaseAnalytics.setCurrentScreen(this, MainActivity.class.getName(), null);
-    }
-
-    private void setupJob() {
-        FirebaseJobDispatcher dispatcher = new FirebaseJobDispatcher(new GooglePlayDriver(this));
-        Job job = dispatcher.newJobBuilder()
-                .setService(JobServiceCheckNetwork.class)
-                .setTag("connectivity-job")
-                .setLifetime(Lifetime.FOREVER)
-                .setRetryStrategy(RetryStrategy.DEFAULT_LINEAR)
-                .setRecurring(true).setReplaceCurrent(true)
-                .setTrigger(Trigger.executionWindow(0, 0))
-                .build();
-        dispatcher.mustSchedule(job);
     }
 
     @Override

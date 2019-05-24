@@ -40,7 +40,7 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/id_admob_aplication" />
 
-        <receiver android:name=".moviesawesome.free.free.FavoriteWidget">
+        <receiver android:name=".core.ui.FavoriteWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -50,16 +50,8 @@
                 android:resource="@xml/favorite_widget_info" />
         </receiver>
 
-        <service android:name=".moviesawesome.free.free.FavoriteWidgetService"
+        <service android:name=".core.ui.FavoriteWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
-        <service
-            android:name=".main.ui.JobServiceCheckNetwork"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />
-            </intent-filter>
-        </service>
     </application>
 
 </manifest>

@@ -1,11 +1,8 @@
 package com.example.core.ui;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -15,15 +12,13 @@ import com.example.core.data.source.local.AppDatabase;
 import com.example.core.data.source.local.detail.FavoriteDao;
 import com.example.core.util.AppExecutors;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.Observable;
-import java.util.Observer;
 
 public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteViewsFactory {
 
     private Context context;
-    private LiveData<List<Result>> results;
+    private List<Result> results = new ArrayList<>();
     private AppExecutors executors = new AppExecutors();
     private FavoriteDao favoriteDao;
 
@@ -36,12 +31,12 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
 
     @Override
     public void onCreate() {
-        executors.diskIO().execute(() -> results = favoriteDao.getAllFavorites());
+        executors.diskIO().execute(() -> results = favoriteDao.getAllFavoritesWidget());
     }
 
     @Override
     public void onDataSetChanged() {
-        executors.diskIO().execute(() -> results = favoriteDao.getAllFavorites());
+        executors.diskIO().execute(() -> results = favoriteDao.getAllFavoritesWidget());
     }
 
     @Override
@@ -51,8 +46,8 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
 
     @Override
     public int getCount() {
-        if (results.getValue() != null) {
-            return results.getValue().size();
+        if (results != null) {
+            return results.size();
         } else {
             return 0;
         }
@@ -60,14 +55,10 @@ public class FavoriteWidgetDataProvider implements RemoteViewsService.RemoteView
 
     @Override
     public RemoteViews getViewAt(int position) {
-        RemoteViews view =
-                new RemoteViews(context.getPackageName(), R.layout.item_widget_favorite);
-        if (results.getValue() != null) {
-            view.setTextViewText(R.id.item_widget_favorite_title, results.getValue().get(position).getTitle());
-        } else {
-            view.setTextViewText(R.id.item_widget_favorite_title, "Nothing");
-        }
-        return view;
+        String title = results.get(position).getTitle();
+        RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.item_widget_favorite);
+        remoteViews.setTextViewText(R.id.item_widget_favorite_title_app, title);
+        return remoteViews;
     }
 
     @Override

@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
+import br.com.carrefour.delegate.viewProvider
 
 import com.example.core.data.model.movie.Result
 import com.example.core.data.source.local.AppDatabase
@@ -32,33 +33,32 @@ import java.util.ArrayList
 @SuppressLint("Registered")
 internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItemClickHandler {
 
-    private val PAGE_START = 1
+    companion object { const val PAGE_START = 1 }
 
-    private var recyclerMain: RecyclerView? = null
-    private var progressBarMain: ProgressBar? = null
+    private val recyclerMain: RecyclerView by viewProvider(R.id.activity_main_recycler_movie)
+    private val progressBarMain: ProgressBar by viewProvider(R.id.activity_main_progress_bar)
+    private val navigationMain: BottomNavigationView by viewProvider(R.id.activity_main_navigation)
+    private val textViewError: TextView by viewProvider(R.id.item_generic_error_text)
+    private val adView: AdView by viewProvider(R.id.activity_main_adview)
     private var mainAdapter: MainAdapter? = null
     private var mainViewModel: MainViewModel? = null
     private var favoriteViewModel: FavoriteViewModel? = null
-    private var textViewError: TextView? = null
     private val results = ArrayList<Result>()
-    private var navigationMain: BottomNavigationView? = null
     private var appDatabase: AppDatabase? = null
     var posterWidth = 500
     private var mFirebaseAnalytics: FirebaseAnalytics? = null
     private val bundle = Bundle()
-    private var adView: AdView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initComponents()
         initInstance()
         getList(savedInstanceState, PAGE_START)
         setupRecyclerView()
         setupNavigation()
         initObservers()
         loadAdRequest()
-        mFirebaseAnalytics!!.setCurrentScreen(this, MainActivity::class.java.name, null)
+        mFirebaseAnalytics?.setCurrentScreen(this, MainActivity::class.java.name, null)
     }
 
     public override fun onSaveInstanceState(outState: Bundle) {
@@ -85,15 +85,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
                     else -> false
                 }
             }
-        navigationMain!!.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
-    }
-
-    private fun initComponents() {
-        recyclerMain = findViewById(R.id.activity_main_recycler_movie)
-        progressBarMain = findViewById(R.id.activity_main_progress_bar)
-        navigationMain = findViewById(R.id.activity_main_navigation)
-        textViewError = findViewById(R.id.item_generic_error_text)
-        adView = findViewById(R.id.activity_main_adview)
+        navigationMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
     private fun initInstance() {
@@ -107,55 +99,55 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
 
     private fun getList(savedInstanceState: Bundle?, page: Int) {
         if (savedInstanceState != null) {
-            mainAdapter!!.addItems(savedInstanceState.getParcelableArrayList("results"))
+            mainAdapter?.addItems(savedInstanceState.getParcelableArrayList("results"))
         } else {
-            progressBarMain!!.visibility = View.VISIBLE
-            recyclerMain!!.visibility = View.GONE
-            mainViewModel!!.getListMovies(page)
+            progressBarMain.visibility = View.VISIBLE
+            recyclerMain.visibility = View.GONE
+            mainViewModel?.getListMovies(page)
         }
     }
 
     private fun getListTopRated(page: Int) {
-        progressBarMain!!.visibility = View.VISIBLE
-        recyclerMain!!.visibility = View.GONE
-        mainViewModel!!.getListMoviesTop(page)
+        progressBarMain.visibility = View.VISIBLE
+        recyclerMain.visibility = View.GONE
+        mainViewModel?.getListMoviesTop(page)
     }
 
     private fun getMyFavorites() {
-        favoriteViewModel!!.getListFavorites(appDatabase).observe(this@MainActivity, Observer { favorite ->
+        favoriteViewModel?.getListFavorites(appDatabase)?.observe(this@MainActivity, Observer { favorite ->
             if (favorite != null) {
-                mainAdapter!!.addItems(favorite)
-                textViewError!!.visibility = View.GONE
-                progressBarMain!!.visibility = View.GONE
-                recyclerMain!!.visibility = View.VISIBLE
+                mainAdapter?.addItems(favorite)
+                textViewError.visibility = View.GONE
+                progressBarMain.visibility = View.GONE
+                recyclerMain.visibility = View.VISIBLE
             } else {
-                textViewError!!.visibility = View.VISIBLE
-                progressBarMain!!.visibility = View.GONE
-                recyclerMain!!.visibility = View.GONE
+                textViewError.visibility = View.VISIBLE
+                progressBarMain.visibility = View.GONE
+                recyclerMain.visibility = View.GONE
             }
         })
     }
 
     private fun setupRecyclerView() {
         val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(posterWidth))
-        recyclerMain!!.addItemDecoration(ItemOffsetDecoration(this, R.dimen.small_margin))
-        recyclerMain!!.layoutManager = gridLayoutManager
-        recyclerMain!!.setHasFixedSize(true)
-        recyclerMain!!.adapter = mainAdapter
+        recyclerMain.addItemDecoration(ItemOffsetDecoration(this, R.dimen.small_margin))
+        recyclerMain.layoutManager = gridLayoutManager
+        recyclerMain.setHasFixedSize(true)
+        recyclerMain.adapter = mainAdapter
     }
 
     private fun initObservers() {
-        mainViewModel!!.movieSingleLiveEvent.observe(this, Observer { movie ->
+        mainViewModel?.movieSingleLiveEvent?.observe(this, Observer { movie ->
             if (movie != null) {
                 if (movie.data == null) {
-                    textViewError!!.visibility = View.VISIBLE
-                    progressBarMain!!.visibility = View.GONE
-                    recyclerMain!!.visibility = View.GONE
+                    textViewError.visibility = View.VISIBLE
+                    progressBarMain.visibility = View.GONE
+                    recyclerMain.visibility = View.GONE
                 } else {
-                    mainAdapter!!.addItems(movie.data!!.results)
-                    textViewError!!.visibility = View.GONE
-                    progressBarMain!!.visibility = View.GONE
-                    recyclerMain!!.visibility = View.VISIBLE
+                    mainAdapter?.addItems(movie.data?.results)
+                    textViewError.visibility = View.GONE
+                    progressBarMain.visibility = View.GONE
+                    recyclerMain.visibility = View.VISIBLE
                 }
             }
         })
@@ -184,8 +176,8 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                mainAdapter!!.filter.filter(newText)
-                mainAdapter!!.notifyDataSetChanged()
+                mainAdapter?.filter?.filter(newText)
+                mainAdapter?.notifyDataSetChanged()
                 return true
             }
         })
@@ -195,28 +187,22 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         bundle.putLong(FirebaseAnalytics.Param.ITEM_ID, result.id)
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, result.title)
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, result.poster_path)
-        mFirebaseAnalytics!!.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+        mFirebaseAnalytics?.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
         startActivity(Router.provideToDetailIntent(result))
     }
 
     override fun onPause() {
-        if (adView != null) {
-            adView!!.resume()
-        }
+        adView.resume()
         super.onPause()
     }
 
     override fun onResume() {
         super.onResume()
-        if (adView != null) {
-            adView!!.resume()
-        }
+        adView.resume()
     }
 
     override fun onDestroy() {
-        if (adView != null) {
-            adView!!.destroy()
-        }
+        adView.destroy()
         super.onDestroy()
     }
 
@@ -224,6 +210,6 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         val adRequest = AdRequest.Builder()
             .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
             .build()
-        adView!!.loadAd(adRequest)
+        adView.loadAd(adRequest)
     }
 }

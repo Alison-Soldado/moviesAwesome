@@ -6,9 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/detail/detail.iml" filepath="$PROJECT_DIR$/detail/detail.iml" />
       <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/movieawesome.iml" filepath="$PROJECT_DIR$/movieawesome.iml" />
       <module fileurl="file://$PROJECT_DIR$/moviesAwesome.iml" filepath="$PROJECT_DIR$/moviesAwesome.iml" />
-      <module fileurl="file://$PROJECT_DIR$/moviesawesome.iml" filepath="$PROJECT_DIR$/moviesawesome.iml" />
       <module fileurl="file://$PROJECT_DIR$/test/test.iml" filepath="$PROJECT_DIR$/test/test.iml" />
     </modules>
   </component>

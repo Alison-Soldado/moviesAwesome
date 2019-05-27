@@ -1,4 +1,6 @@
 apply plugin: 'com.android.feature'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
 apply from: '../default_config.gradle'
 
 dependencies {

@@ -11,12 +11,11 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.DisplayMetrics
 import android.view.Menu
-import android.view.View
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
+import br.com.carrefour.base.statemachine.ViewStateMachine
 import br.com.carrefour.delegate.viewProvider
-
 import com.example.core.data.model.movie.Result
 import com.example.core.data.source.local.AppDatabase
 import com.example.core.ui.FavoriteViewModel
@@ -27,14 +26,18 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.analytics.FirebaseAnalytics
-
-import java.util.ArrayList
+import java.util.*
 
 @SuppressLint("Registered")
 internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItemClickHandler {
 
-    companion object { const val PAGE_START = 1 }
-
+    companion object {
+        const val PAGE_START = 1
+        const val LOAD_STATE = 0
+        const val SUCCESS_STATE = 1
+        const val ERROR_STATE = 2
+    }
+    private val viewStateMachine by lazy { ViewStateMachine() }
     private val recyclerMain: RecyclerView by viewProvider(R.id.activity_main_recycler_movie)
     private val progressBarMain: ProgressBar by viewProvider(R.id.activity_main_progress_bar)
     private val navigationMain: BottomNavigationView by viewProvider(R.id.activity_main_navigation)
@@ -52,6 +55,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupState(savedInstanceState)
         initInstance()
         getList(savedInstanceState, PAGE_START)
         setupRecyclerView()
@@ -61,8 +65,27 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         mFirebaseAnalytics?.setCurrentScreen(this, MainActivity::class.java.name, null)
     }
 
+    private fun setupState(savedInstanceState: Bundle?) {
+        viewStateMachine.setup(LOAD_STATE, savedInstanceState) {
+            add(LOAD_STATE) {
+                visibles(progressBarMain)
+                gones(recyclerMain, textViewError)
+            }
+
+            add(SUCCESS_STATE) {
+                visibles(recyclerMain)
+                gones(progressBarMain, textViewError)
+            }
+
+            add(ERROR_STATE) {
+                visibles(textViewError)
+                gones(recyclerMain, progressBarMain)
+            }
+        }
+    }
+
     public override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelableArrayList("results", mainAdapter!!.items as ArrayList<out Parcelable>)
+        outState.putParcelableArrayList("results", mainAdapter?.items as ArrayList<out Parcelable>)
         super.onSaveInstanceState(outState)
     }
 
@@ -101,15 +124,13 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         if (savedInstanceState != null) {
             mainAdapter?.addItems(savedInstanceState.getParcelableArrayList("results"))
         } else {
-            progressBarMain.visibility = View.VISIBLE
-            recyclerMain.visibility = View.GONE
+            viewStateMachine.changeState(LOAD_STATE)
             mainViewModel?.getListMovies(page)
         }
     }
 
     private fun getListTopRated(page: Int) {
-        progressBarMain.visibility = View.VISIBLE
-        recyclerMain.visibility = View.GONE
+        viewStateMachine.changeState(LOAD_STATE)
         mainViewModel?.getListMoviesTop(page)
     }
 
@@ -117,13 +138,9 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         favoriteViewModel?.getListFavorites(appDatabase)?.observe(this@MainActivity, Observer { favorite ->
             if (favorite != null) {
                 mainAdapter?.addItems(favorite)
-                textViewError.visibility = View.GONE
-                progressBarMain.visibility = View.GONE
-                recyclerMain.visibility = View.VISIBLE
+                viewStateMachine.changeState(SUCCESS_STATE)
             } else {
-                textViewError.visibility = View.VISIBLE
-                progressBarMain.visibility = View.GONE
-                recyclerMain.visibility = View.GONE
+                viewStateMachine.changeState(ERROR_STATE)
             }
         })
     }
@@ -140,14 +157,10 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         mainViewModel?.movieSingleLiveEvent?.observe(this, Observer { movie ->
             if (movie != null) {
                 if (movie.data == null) {
-                    textViewError.visibility = View.VISIBLE
-                    progressBarMain.visibility = View.GONE
-                    recyclerMain.visibility = View.GONE
+                    viewStateMachine.changeState(ERROR_STATE)
                 } else {
                     mainAdapter?.addItems(movie.data?.results)
-                    textViewError.visibility = View.GONE
-                    progressBarMain.visibility = View.GONE
-                    recyclerMain.visibility = View.VISIBLE
+                    viewStateMachine.changeState(SUCCESS_STATE)
                 }
             }
         })

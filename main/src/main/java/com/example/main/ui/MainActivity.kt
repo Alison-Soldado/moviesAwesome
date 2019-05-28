@@ -147,10 +147,12 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
 
     private fun setupRecyclerView() {
         val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(posterWidth))
-        recyclerMain.addItemDecoration(ItemOffsetDecoration(this, R.dimen.small_margin))
-        recyclerMain.layoutManager = gridLayoutManager
-        recyclerMain.setHasFixedSize(true)
-        recyclerMain.adapter = mainAdapter
+        recyclerMain.apply {
+            addItemDecoration(ItemOffsetDecoration(this@MainActivity, R.dimen.small_margin))
+            layoutManager = gridLayoutManager
+            setHasFixedSize(true)
+            adapter = mainAdapter
+        }
     }
 
     private fun initObservers() {

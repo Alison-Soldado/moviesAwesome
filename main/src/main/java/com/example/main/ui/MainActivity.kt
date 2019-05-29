@@ -31,25 +31,18 @@ import java.util.*
 @SuppressLint("Registered")
 internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItemClickHandler {
 
-    companion object {
-        const val PAGE_START = 1
-        const val LOAD_STATE = 0
-        const val SUCCESS_STATE = 1
-        const val ERROR_STATE = 2
-    }
     private val viewStateMachine by lazy { ViewStateMachine() }
     private val recyclerMain: RecyclerView by viewProvider(R.id.activity_main_recycler_movie)
     private val progressBarMain: ProgressBar by viewProvider(R.id.activity_main_progress_bar)
     private val navigationMain: BottomNavigationView by viewProvider(R.id.activity_main_navigation)
     private val textViewError: TextView by viewProvider(R.id.item_generic_error_text)
     private val adView: AdView by viewProvider(R.id.activity_main_adview)
-    private var mainAdapter: MainAdapter? = null
-    private var mainViewModel: MainViewModel? = null
-    private var favoriteViewModel: FavoriteViewModel? = null
+    private lateinit var favoriteViewModel: FavoriteViewModel
+    private var firebaseAnalytics: FirebaseAnalytics? = null
+    private lateinit var mainViewModel: MainViewModel
+    private lateinit var mainAdapter: MainAdapter
+    private lateinit var appDatabase: AppDatabase
     private val results = ArrayList<Result>()
-    private var appDatabase: AppDatabase? = null
-    var posterWidth = 500
-    private var mFirebaseAnalytics: FirebaseAnalytics? = null
     private val bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,7 +55,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         setupNavigation()
         initObservers()
         loadAdRequest()
-        mFirebaseAnalytics?.setCurrentScreen(this, MainActivity::class.java.name, null)
+        firebaseAnalytics?.setCurrentScreen(this, MainActivity::class.java.name, null)
     }
 
     private fun setupState(savedInstanceState: Bundle?) {
@@ -85,7 +78,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
     }
 
     public override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelableArrayList("results", mainAdapter?.items as ArrayList<out Parcelable>)
+        outState.putParcelableArrayList("results", mainAdapter.items as ArrayList<out Parcelable>)
         super.onSaveInstanceState(outState)
     }
 
@@ -116,28 +109,28 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
         mainAdapter = MainAdapter(this, this, results)
-        mFirebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
         MobileAds.initialize(this, getString(R.string.id_admob_aplication))
     }
 
     private fun getList(savedInstanceState: Bundle?, page: Int) {
         if (savedInstanceState != null) {
-            mainAdapter?.addItems(savedInstanceState.getParcelableArrayList("results"))
+            mainAdapter.addItems(savedInstanceState.getParcelableArrayList("results"))
         } else {
             viewStateMachine.changeState(LOAD_STATE)
-            mainViewModel?.getListMovies(page)
+            mainViewModel.getListMovies(page)
         }
     }
 
     private fun getListTopRated(page: Int) {
         viewStateMachine.changeState(LOAD_STATE)
-        mainViewModel?.getListMoviesTop(page)
+        mainViewModel.getListMoviesTop(page)
     }
 
     private fun getMyFavorites() {
-        favoriteViewModel?.getListFavorites(appDatabase)?.observe(this@MainActivity, Observer { favorite ->
+        favoriteViewModel.getListFavorites(appDatabase)?.observe(this@MainActivity, Observer { favorite ->
             if (favorite != null) {
-                mainAdapter?.addItems(favorite)
+                mainAdapter.addItems(favorite)
                 viewStateMachine.changeState(SUCCESS_STATE)
             } else {
                 viewStateMachine.changeState(ERROR_STATE)
@@ -146,7 +139,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
     }
 
     private fun setupRecyclerView() {
-        val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(posterWidth))
+        val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(POSTER_WIDTH))
         recyclerMain.apply {
             addItemDecoration(ItemOffsetDecoration(this@MainActivity, R.dimen.small_margin))
             layoutManager = gridLayoutManager
@@ -156,12 +149,12 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
     }
 
     private fun initObservers() {
-        mainViewModel?.movieSingleLiveEvent?.observe(this, Observer { movie ->
+        mainViewModel.movieSingleLiveEvent?.observe(this, Observer { movie ->
             if (movie != null) {
                 if (movie.data == null) {
                     viewStateMachine.changeState(ERROR_STATE)
                 } else {
-                    mainAdapter?.addItems(movie.data?.results)
+                    mainAdapter.addItems(movie.data?.results)
                     viewStateMachine.changeState(SUCCESS_STATE)
                 }
             }
@@ -191,8 +184,8 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                mainAdapter?.filter?.filter(newText)
-                mainAdapter?.notifyDataSetChanged()
+                mainAdapter.filter?.filter(newText)
+                mainAdapter.notifyDataSetChanged()
                 return true
             }
         })
@@ -202,7 +195,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         bundle.putLong(FirebaseAnalytics.Param.ITEM_ID, result.id)
         bundle.putString(FirebaseAnalytics.Param.ITEM_NAME, result.title)
         bundle.putString(FirebaseAnalytics.Param.CONTENT_TYPE, result.poster_path)
-        mFirebaseAnalytics?.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
+        firebaseAnalytics?.logEvent(FirebaseAnalytics.Event.SELECT_CONTENT, bundle)
         startActivity(Router.provideToDetailIntent(result))
     }
 
@@ -226,5 +219,13 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
             .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
             .build()
         adView.loadAd(adRequest)
+    }
+
+    companion object {
+        const val PAGE_START = 1
+        const val LOAD_STATE = 0
+        const val SUCCESS_STATE = 1
+        const val ERROR_STATE = 2
+        const val POSTER_WIDTH = 500
     }
 }

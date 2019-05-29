@@ -37,6 +37,14 @@ dependencies {
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$rootProject.kotlin_version"
 
+    api "org.koin:koin-android:$rootProject.koin_version"
+
+    api "org.koin:koin-android-scope:$rootProject.koin_version"
+
+    api "org.koin:koin-android-viewmodel:$rootProject.koin_version"
+
+    api "org.koin:koin-android-ext:$rootProject.koin_version"
+
     testImplementation project(':test')
     androidTestImplementation project(':test')
 }

@@ -14,10 +14,10 @@ import android.view.Menu
 import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
-import br.com.carrefour.base.statemachine.ViewStateMachine
-import br.com.carrefour.delegate.viewProvider
 import com.example.core.data.model.movie.Result
 import com.example.core.data.source.local.AppDatabase
+import com.example.core.delegate.viewProvider
+import com.example.core.statemachine.ViewStateMachine
 import com.example.core.ui.FavoriteViewModel
 import com.example.core.util.ItemOffsetDecoration
 import com.example.core.util.Router
@@ -77,9 +77,32 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         }
     }
 
-    public override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelableArrayList("results", mainAdapter.items as ArrayList<out Parcelable>)
-        super.onSaveInstanceState(outState)
+    private fun initInstance() {
+        appDatabase = AppDatabase.getInstance(applicationContext)
+        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
+        mainAdapter = MainAdapter(this, this, results)
+        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
+        MobileAds.initialize(this, getString(R.string.id_admob_aplication))
+    }
+
+    private fun getList(savedInstanceState: Bundle?, page: Int) {
+        if (savedInstanceState != null) {
+            mainAdapter.addItems(savedInstanceState.getParcelableArrayList("results"))
+        } else {
+            viewStateMachine.changeState(LOAD_STATE)
+            mainViewModel.getListMovies(page)
+        }
+    }
+
+    private fun setupRecyclerView() {
+        val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(POSTER_WIDTH))
+        recyclerMain.apply {
+            addItemDecoration(ItemOffsetDecoration(this@MainActivity, R.dimen.small_margin))
+            layoutManager = gridLayoutManager
+            setHasFixedSize(true)
+            adapter = mainAdapter
+        }
     }
 
     private fun setupNavigation() {
@@ -104,22 +127,22 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
         navigationMain.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
     }
 
-    private fun initInstance() {
-        appDatabase = AppDatabase.getInstance(applicationContext)
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
-        favoriteViewModel = ViewModelProviders.of(this).get(FavoriteViewModel::class.java)
-        mainAdapter = MainAdapter(this, this, results)
-        firebaseAnalytics = FirebaseAnalytics.getInstance(this)
-        MobileAds.initialize(this, getString(R.string.id_admob_aplication))
+    private fun initObservers() {
+        mainViewModel.movieSingleLiveEvent?.observe(this, Observer { movie ->
+            if (movie != null) {
+                if (movie.data == null) {
+                    viewStateMachine.changeState(ERROR_STATE)
+                } else {
+                    mainAdapter.addItems(movie.data?.results)
+                    viewStateMachine.changeState(SUCCESS_STATE)
+                }
+            }
+        })
     }
 
-    private fun getList(savedInstanceState: Bundle?, page: Int) {
-        if (savedInstanceState != null) {
-            mainAdapter.addItems(savedInstanceState.getParcelableArrayList("results"))
-        } else {
-            viewStateMachine.changeState(LOAD_STATE)
-            mainViewModel.getListMovies(page)
-        }
+    public override fun onSaveInstanceState(outState: Bundle) {
+        outState.putParcelableArrayList("results", mainAdapter.items as ArrayList<out Parcelable>)
+        super.onSaveInstanceState(outState)
     }
 
     private fun getListTopRated(page: Int) {
@@ -134,29 +157,6 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
                 viewStateMachine.changeState(SUCCESS_STATE)
             } else {
                 viewStateMachine.changeState(ERROR_STATE)
-            }
-        })
-    }
-
-    private fun setupRecyclerView() {
-        val gridLayoutManager = GridLayoutManager(this, calculateBestSpanCount(POSTER_WIDTH))
-        recyclerMain.apply {
-            addItemDecoration(ItemOffsetDecoration(this@MainActivity, R.dimen.small_margin))
-            layoutManager = gridLayoutManager
-            setHasFixedSize(true)
-            adapter = mainAdapter
-        }
-    }
-
-    private fun initObservers() {
-        mainViewModel.movieSingleLiveEvent?.observe(this, Observer { movie ->
-            if (movie != null) {
-                if (movie.data == null) {
-                    viewStateMachine.changeState(ERROR_STATE)
-                } else {
-                    mainAdapter.addItems(movie.data?.results)
-                    viewStateMachine.changeState(SUCCESS_STATE)
-                }
             }
         })
     }

@@ -1,4 +1,4 @@
-package br.com.carrefour.delegate
+package com.example.core.delegate
 
 import android.app.Activity
 import android.support.annotation.IdRes

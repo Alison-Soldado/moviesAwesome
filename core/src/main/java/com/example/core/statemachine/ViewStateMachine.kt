@@ -1,4 +1,4 @@
-package br.com.carrefour.base.statemachine
+package com.example.core.statemachine
 
 import android.view.View.*
 

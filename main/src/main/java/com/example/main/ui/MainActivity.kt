@@ -108,16 +108,16 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
     private fun setupNavigation() {
         val mOnNavigationItemSelectedListener =
             BottomNavigationView.OnNavigationItemSelectedListener { item ->
-                when {
-                    item.itemId == R.id.menu_main_movie_popular -> {
+                when(item.itemId) {
+                    R.id.menu_main_movie_popular -> {
                         getList(null, PAGE_START)
                         true
                     }
-                    item.itemId == R.id.menu_main_movie_top_rated -> {
+                    R.id.menu_main_movie_top_rated -> {
                         getListTopRated(PAGE_START)
                         true
                     }
-                    item.itemId == R.id.menu_main_movie_my_favorites -> {
+                    R.id.menu_main_movie_my_favorites -> {
                         getMyFavorites()
                         true
                     }
@@ -133,7 +133,7 @@ internal class MainActivity : AppCompatActivity(), MainAdapter.MainAdapterOnItem
                 if (movie.data == null) {
                     viewStateMachine.changeState(ERROR_STATE)
                 } else {
-                    mainAdapter.addItems(movie.data?.results)
+                    mainAdapter.addItems(movie.data?.results!!)
                     viewStateMachine.changeState(SUCCESS_STATE)
                 }
             }

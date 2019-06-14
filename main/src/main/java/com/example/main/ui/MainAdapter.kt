@@ -23,10 +23,6 @@ class MainAdapter (
 ) : RecyclerView.Adapter<MainAdapter.MainAdapterViewHolder>(), Filterable {
     var items: List<Result> = listOf()
 
-    init {
-        this.items = results
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainAdapterViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_main, parent, false)
         return MainAdapterViewHolder(view)
